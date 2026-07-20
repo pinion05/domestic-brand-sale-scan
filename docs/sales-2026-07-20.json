@@ -1,0 +1,458 @@
+{
+  "verifiedAt": "2026-07-20T16:36:00+09:00",
+  "verifiedLabel": "2026-07-20 16:36 KST",
+  "source": {
+    "rankingPages": 10,
+    "brandCandidates": 384,
+    "renderedUrls": 233,
+    "finalBrands": 52,
+    "exactOffers": 30,
+    "openSalePages": 22
+  },
+  "sales": [
+    {
+      "brand": "엘리자베스 스튜어트",
+      "url": "https://elizabethstuart.co.kr/",
+      "offer": "공식몰 클리어런스 UP TO 94%",
+      "max": 94,
+      "tier": "exact",
+      "condition": "공식몰 클리어런스"
+    },
+    {
+      "brand": "마인드브릿지",
+      "url": "https://mindbridge.co.kr/",
+      "offer": "브랜드데이 최대 89% · 아울렛 최대 92% · 시즌오프 최대 50%",
+      "max": 92,
+      "tier": "exact",
+      "condition": "브랜드데이는 7/20, 아울렛은 7/22까지",
+      "urgent": true,
+      "urgentMax": 89,
+      "urgentCondition": "브랜드데이 7/20 하루"
+    },
+    {
+      "brand": "에어릿",
+      "url": "https://airitsports.com/",
+      "offer": "SUMMER FESTA ~90%",
+      "max": 90,
+      "tier": "exact",
+      "condition": "상품별 할인율 상이"
+    },
+    {
+      "brand": "23.65",
+      "url": "https://23-65.com/",
+      "offer": "WEEKEND SALE UP TO 86% · 확인 상품 53~60%",
+      "max": 86,
+      "tier": "exact",
+      "condition": "7/20까지",
+      "urgent": true,
+      "urgentMax": 86,
+      "urgentCondition": "7/20까지"
+    },
+    {
+      "brand": "마뗑킴",
+      "url": "https://matinkim.com/product/list.html?cate_no=214",
+      "offer": "SEASON OFF UP TO 80%",
+      "max": 80,
+      "tier": "exact",
+      "condition": "시즌오프 카테고리"
+    },
+    {
+      "brand": "알키알카",
+      "url": "https://alkialka.com/",
+      "offer": "SUMMER STOREWIDE SALE · UP TO 80%",
+      "max": 80,
+      "tier": "exact",
+      "condition": "스토어 전반 세일"
+    },
+    {
+      "brand": "유니폼브릿지",
+      "url": "https://uniformbridge.com/",
+      "offer": "S/S CLEARANCE SALE · 최대 80%",
+      "max": 80,
+      "tier": "exact",
+      "condition": "S/S 아이템"
+    },
+    {
+      "brand": "미스테리어스호텔",
+      "url": "https://themysterioushotel.com/",
+      "offer": "OUTLET UP TO 80%",
+      "max": 80,
+      "tier": "exact",
+      "condition": "회원 전용"
+    },
+    {
+      "brand": "로제프란츠",
+      "url": "https://rosefrantz.com/",
+      "offer": "SEASON OFF · 확인 상품 30~70%",
+      "max": 70,
+      "tier": "exact",
+      "condition": "상품별 할인율 상이"
+    },
+    {
+      "brand": "제이엘브",
+      "url": "https://jeleve.co.kr/",
+      "offer": "SEASON OFF UP TO 65% · Drop Open UP TO 35%",
+      "max": 65,
+      "tier": "exact",
+      "condition": "컬렉션별 상이"
+    },
+    {
+      "brand": "핑크존",
+      "url": "https://pinkzone.co.kr/",
+      "offer": "잠옷 상품 최대 64%",
+      "max": 64,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "카네이테이",
+      "url": "https://kaneitei.com/",
+      "offer": "오정규 PICK · UP TO 63%",
+      "max": 63,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아스트로브",
+      "url": "https://astrove.co.kr/",
+      "offer": "REFUR SALE ~60%",
+      "max": 60,
+      "tier": "exact",
+      "condition": "리퍼브 상품"
+    },
+    {
+      "brand": "핍스 모터사이클",
+      "url": "https://phyps-department.co.kr/",
+      "offer": "SUMMER READY UP TO ~59%",
+      "max": 59,
+      "tier": "exact",
+      "condition": "Honda × PHYPS 어패럴"
+    },
+    {
+      "brand": "코데즈컴바인 이너웨어",
+      "url": "https://codescombineinnerwear.co.kr/",
+      "offer": "썸머세일 전 상품 ~50%",
+      "max": 50,
+      "tier": "exact",
+      "condition": "상품별 할인율 상이"
+    },
+    {
+      "brand": "인사일런스 우먼",
+      "url": "https://insilencewomen.com/",
+      "offer": "2026 여름 시즌오프 · 최대 50%",
+      "max": 50,
+      "tier": "exact",
+      "condition": "7/16~7/31"
+    },
+    {
+      "brand": "히에타",
+      "url": "https://hieta.co.kr/",
+      "offer": "HIETA VACANCE WEEK · UP TO 45%",
+      "max": 45,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "드헤베",
+      "url": "https://deheve.com/",
+      "offer": "26 SUMMER SEASON OFF · 40%",
+      "max": 40,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "일리고",
+      "url": "https://illigo.co.kr/",
+      "offer": "SUMMER FESTA UP TO 40% + 20% 쿠폰",
+      "max": 40,
+      "tier": "exact",
+      "condition": "쿠폰 조건 확인"
+    },
+    {
+      "brand": "포즈간츠",
+      "url": "https://pose-ganch.com/",
+      "offer": "SUMMER WEEK 40% OFF",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "블랙야크",
+      "url": "https://blackyak.com/",
+      "offer": "COIN UP TO 40% + BAC코인 등급별 추가 10%",
+      "max": 40,
+      "tier": "exact",
+      "condition": "등급별 추가 혜택"
+    },
+    {
+      "brand": "레이지소사이어티",
+      "url": "https://lazysociety.co.kr/",
+      "offer": "특가세일 최대 40%",
+      "max": 40,
+      "tier": "exact",
+      "condition": "특가 카테고리"
+    },
+    {
+      "brand": "LMC",
+      "url": "https://lostmanagementcities.com/",
+      "offer": "26 SUMMER FINAL SALE · 확인 상품 30~40%",
+      "max": 40,
+      "tier": "exact",
+      "condition": "종료 카운트다운 표시"
+    },
+    {
+      "brand": "이스케이프프롬",
+      "url": "https://escapefrom.co.kr/",
+      "offer": "확인 상품 약 15~31%",
+      "max": 31,
+      "tier": "exact",
+      "condition": "캠페인명·기간 미표기"
+    },
+    {
+      "brand": "어나더 오피스",
+      "url": "https://anotheroffice.co.kr/",
+      "offer": "ESSENTIAL SALE UP TO 30% + 15% 쿠폰",
+      "max": 30,
+      "tier": "exact",
+      "condition": "쿠폰 조건 확인"
+    },
+    {
+      "brand": "빈폴 액세서리",
+      "url": "https://www.ssfshop.com/Beanpole-Accessory/main?brandShopNo=BDMA01A04&brndShopId=BPBBE",
+      "offer": "26 S/S 시즌오프 최대 30%",
+      "max": 30,
+      "tier": "exact",
+      "condition": "운영사 SSF 공식 브랜드관"
+    },
+    {
+      "brand": "송지오",
+      "url": "https://songzio.com/",
+      "offer": "WOMAN BRAND WEEK · 최대 20% + 추가 5% 쿠폰",
+      "max": 20,
+      "tier": "exact",
+      "condition": "쿠폰 조건 확인"
+    },
+    {
+      "brand": "레이지비",
+      "url": "https://lazybee.co.kr/",
+      "offer": "신상 최대 20% + 1+1",
+      "max": 20,
+      "tier": "exact",
+      "condition": "쿠폰 적용가 포함"
+    },
+    {
+      "brand": "아워데이즈",
+      "url": "https://ourdayz.co.kr/",
+      "offer": "확인 상품 다수 20%",
+      "max": 20,
+      "tier": "exact",
+      "condition": "캠페인명·기간 미표기"
+    },
+    {
+      "brand": "비나제이",
+      "url": "https://vinaj.kr/",
+      "offer": "ALL ITEM 15% OFF",
+      "max": 15,
+      "tier": "exact",
+      "condition": "기간 미표기"
+    },
+    {
+      "brand": "배드블러드",
+      "url": "https://badblood.co.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "더콜디스트모먼트",
+      "url": "https://thecoldestmoment.com/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "에스피오나지",
+      "url": "https://espionage.co.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "무드인사이드",
+      "url": "https://maninstore.co.kr/",
+      "offer": "BLACK FRIDAY 1+1",
+      "max": null,
+      "tier": "page",
+      "condition": "종료일 미표기"
+    },
+    {
+      "brand": "힐다",
+      "url": "https://hillda.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "후브스",
+      "url": "https://hooves.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "비헤비어",
+      "url": "https://beheavyer.com/",
+      "offer": "26 봄·여름 시즌오프",
+      "max": null,
+      "tier": "page",
+      "condition": "회원 전용 · 할인율 미표기"
+    },
+    {
+      "brand": "이티씨이",
+      "url": "https://etce.kr/",
+      "offer": "SUMMER FINAL SALE",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "더니트컴퍼니",
+      "url": "https://theknitcompany.com/",
+      "offer": "END OF SEASON SALE",
+      "max": null,
+      "tier": "page",
+      "condition": "신규 세일 상품 추가 · 할인율 미표기"
+    },
+    {
+      "brand": "에브리시",
+      "url": "https://everyasy.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "브라운야드",
+      "url": "https://brownyard.co.kr/",
+      "offer": "26SS 시즌오프",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "커스텀어클락",
+      "url": "https://costumeoclock.co.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "공식몰 회원 전용 · 할인율 미표기"
+    },
+    {
+      "brand": "비디오자키",
+      "url": "https://videojockey.co.kr/",
+      "offer": "SUMMER SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "이카룩",
+      "url": "https://ikalook.co.kr/",
+      "offer": "기간한정 SALE ITEM",
+      "max": null,
+      "tier": "page",
+      "condition": "구체 기간·할인율 미표기"
+    },
+    {
+      "brand": "포르테나",
+      "url": "https://porterna.com/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "밀로 우먼",
+      "url": "https://millowomen.com/",
+      "offer": "2026 SUMMER SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "공지·메뉴 노출 · 할인율 미표기"
+    },
+    {
+      "brand": "1993스튜디오",
+      "url": "https://1993studio.com/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "엠엠엘지",
+      "url": "https://mmlg.co.kr/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "언더오프",
+      "url": "https://underoff.com/",
+      "offer": "SEASON OFF",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "제너럴아이디어",
+      "url": "https://generalidea.co.kr/",
+      "offer": "시즌오프",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "헤지스",
+      "url": "https://www.hazzys.com/",
+      "offer": "시즌오프",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율은 회원 상시혜택과만 연결"
+    },
+    {
+      "brand": "던스트",
+      "url": "https://dunststudio.com/",
+      "offer": "SUMMER TEE SALE · 파이널 시즌오프 · 라스트피스",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    }
+  ],
+  "excluded": [
+    {
+      "label": "현재 화면에 구체 세일 없음",
+      "items": ["마하그리드", "아이돈워너셀", "올리브데올리브"]
+    },
+    {
+      "label": "raw HTML에만 남은 신호",
+      "items": ["커버낫", "시눈"]
+    },
+    {
+      "label": "과거 캠페인",
+      "items": ["단델 — 2025 FLAT PRICE SALE"]
+    },
+    {
+      "label": "도메인 불일치",
+      "items": ["cornell.com → 캔버스 불일치", "mindbridge.kr → 심리상담 사이트"]
+    },
+    {
+      "label": "플랫폼 행사 또는 첫 구매 혜택",
+      "items": ["하이츠·하프클럽·H몰 행사", "로우로우·르바·키치앤키스 첫 구매 쿠폰"]
+    }
+  ]
+}

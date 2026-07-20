@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101419">
+  <meta name="description" content="2026년 7월 20일 기준 국내 패션 브랜드 공식몰 세일 검증 목록">
+  <meta property="og:title" content="Domestic Sale Ledger — 2026.07.20">
+  <meta property="og:description" content="공식몰 렌더링으로 확인한 국내 패션 브랜드 세일 52곳">
+  <meta property="og:type" content="website">
+  <title>Domestic Sale Ledger — 2026.07.20</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #101419;
+      --ink-soft: #56606a;
+      --alloy: #e5e9ec;
+      --paper: #f7f8f9;
+      --white: #ffffff;
+      --signal: #ff4d21;
+      --signal-soft: #ffe0d8;
+      --line: rgba(16, 20, 25, 0.18);
+      --display: "Archivo Black", sans-serif;
+      --body: "Noto Sans KR", sans-serif;
+      --page-x: clamp(20px, 4vw, 68px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--alloy);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    ::selection { color: var(--white); background: var(--signal); }
+
+    .scroll-progress {
+      position: fixed;
+      z-index: 100;
+      inset: 0 auto auto 0;
+      width: var(--scroll, 0%);
+      height: 4px;
+      background: var(--signal);
+      pointer-events: none;
+    }
+
+    .site-header {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 var(--page-x);
+      color: var(--white);
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .wordmark {
+      font-family: var(--display);
+      font-size: 17px;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+    .wordmark span { color: var(--signal); }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .header-link {
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    }
+
+    main { overflow: clip; }
+    .hero {
+      position: relative;
+      min-height: min(760px, calc(100svh - 66px));
+      display: grid;
+      grid-template-columns: minmax(115px, 0.23fr) minmax(0, 1fr);
+      background: var(--ink);
+      color: var(--white);
+    }
+    .date-spine {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .date-spine strong {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-family: var(--display);
+      font-size: clamp(94px, 14vw, 230px);
+      line-height: 0.72;
+      letter-spacing: -0.09em;
+      color: var(--signal);
+      transform: translate(-50%, -50%) rotate(-90deg);
+      white-space: nowrap;
+    }
+    .date-spine small {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 34px;
+      writing-mode: vertical-rl;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .hero-content {
+      align-self: end;
+      padding: clamp(54px, 8vw, 118px) var(--page-x);
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 28px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 4px;
+      background: var(--signal);
+    }
+    h1 {
+      max-width: 1050px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(54px, 9.6vw, 154px);
+      line-height: 0.84;
+      letter-spacing: -0.075em;
+      text-transform: uppercase;
+    }
+    h1 em {
+      display: block;
+      color: var(--signal);
+      font-style: normal;
+    }
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.72fr) minmax(260px, 1fr);
+      gap: clamp(36px, 8vw, 120px);
+      align-items: end;
+      margin-top: clamp(46px, 8vw, 94px);
+    }
+    .hero-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .hero-stat strong {
+      font-family: var(--display);
+      font-size: clamp(60px, 8vw, 116px);
+      line-height: 0.75;
+      color: var(--signal);
+    }
+    .hero-stat span {
+      max-width: 150px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+    .hero-copy {
+      max-width: 670px;
+      margin: 0;
+      color: #c8cdd1;
+      font-size: clamp(15px, 1.5vw, 19px);
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .urgent-zone {
+      display: grid;
+      grid-template-columns: minmax(160px, 0.28fr) minmax(0, 1fr);
+      padding: 0 var(--page-x);
+      background: var(--signal);
+      color: var(--ink);
+    }
+    .urgent-label {
+      padding: 36px 28px 36px 0;
+      border-right: 1px solid rgba(16, 20, 25, 0.35);
+      font-family: var(--display);
+      font-size: clamp(21px, 3vw, 38px);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+    .urgent-list { min-width: 0; }
+    .urgent-item {
+      display: grid;
+      grid-template-columns: minmax(140px, 0.5fr) minmax(260px, 1.5fr) auto;
+      align-items: center;
+      gap: 24px;
+      min-height: 82px;
+      padding: 14px 0 14px 34px;
+      border-bottom: 1px solid rgba(16, 20, 25, 0.35);
+      text-decoration: none;
+    }
+    .urgent-item:last-child { border-bottom: 0; }
+    .urgent-item strong { font-size: 18px; }
+    .urgent-item span { font-size: 14px; font-weight: 600; }
+    .urgent-item b { font-family: var(--display); font-size: 25px; }
+
+    .ledger {
+      background: var(--paper);
+      padding-bottom: 110px;
+    }
+    .ledger-head {
+      padding: 90px var(--page-x) 38px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-kicker {
+      margin: 0 0 13px;
+      color: var(--signal);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(41px, 6vw, 84px);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+    }
+    .ledger-tools {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: grid;
+      grid-template-columns: minmax(230px, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 16px var(--page-x);
+      background: rgba(247, 248, 249, 0.94);
+      border-bottom: 1px solid var(--ink);
+      backdrop-filter: blur(14px);
+    }
+    .search-wrap { position: relative; }
+    .search-wrap label {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--display);
+      font-size: 13px;
+      pointer-events: none;
+    }
+    #search {
+      width: 100%;
+      height: 44px;
+      padding: 0 10px 0 78px;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid var(--ink);
+      border-radius: 0;
+      outline: none;
+    }
+    #search:focus { border-color: var(--signal); }
+    #search::placeholder { color: #92999f; }
+    .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .filter {
+      min-height: 38px;
+      padding: 0 13px;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+      transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+    .filter:hover { transform: translateY(-2px); }
+    .filter[aria-pressed="true"] { color: var(--white); background: var(--ink); }
+    .result-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px var(--page-x);
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .sale-list { border-bottom: 1px solid var(--ink); }
+    .sale-row {
+      --bar: 0%;
+      position: relative;
+      display: grid;
+      grid-template-columns: 58px minmax(170px, 0.7fr) minmax(280px, 1.5fr) minmax(150px, 0.65fr) minmax(74px, 0.35fr) 52px;
+      gap: 24px;
+      align-items: center;
+      min-height: 104px;
+      padding: 18px var(--page-x);
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: row-in 500ms cubic-bezier(.2,.7,.2,1) forwards;
+      animation-delay: var(--delay, 0ms);
+    }
+    .sale-row::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      width: var(--bar);
+      height: 4px;
+      background: var(--signal);
+      transition: width 500ms cubic-bezier(.2,.7,.2,1), height 180ms ease;
+    }
+    .sale-row:hover::before { height: 9px; }
+    .sale-row:hover { background: var(--white); }
+    .row-no {
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: 12px;
+    }
+    .brand-name {
+      margin: 0;
+      font-size: clamp(17px, 1.7vw, 23px);
+      font-weight: 900;
+      line-height: 1.25;
+      word-break: keep-all;
+    }
+    .offer {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+    .condition {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+    .discount {
+      justify-self: end;
+      font-family: var(--display);
+      font-size: clamp(24px, 3vw, 42px);
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+    }
+    .discount.is-open {
+      color: var(--ink-soft);
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .visit {
+      justify-self: end;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      color: var(--white);
+      background: var(--ink);
+      text-decoration: none;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+    .visit:hover, .visit:focus-visible { background: var(--signal); transform: translate(3px, -3px); }
+    .visit span { transform: translateY(-1px); font-size: 22px; }
+    .empty {
+      padding: 80px var(--page-x);
+      color: var(--ink-soft);
+      font-size: 17px;
+      border-top: 1px solid var(--line);
+    }
+
+    .audit {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.55fr) minmax(0, 1.45fr);
+      background: var(--ink);
+      color: var(--white);
+    }
+    .audit-title {
+      padding: 82px var(--page-x);
+      border-right: 1px solid rgba(255,255,255,.2);
+    }
+    .audit-title h2 { font-size: clamp(45px, 6vw, 86px); }
+    .audit-title p {
+      margin: 28px 0 0;
+      color: #aeb5bb;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .audit-body { padding: 82px var(--page-x); }
+    .audit-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255,255,255,.28);
+      border-bottom: 1px solid rgba(255,255,255,.28);
+    }
+    .metric { padding: 28px 18px 30px 0; }
+    .metric strong {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(38px, 5vw, 70px);
+      color: var(--signal);
+    }
+    .metric span { color: #c4c9cd; font-size: 12px; font-weight: 700; }
+    .audit-copy {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px;
+      margin-top: 42px;
+    }
+    .audit-copy h3 { margin: 0 0 12px; font-size: 14px; }
+    .audit-copy p { margin: 0; color: #aeb5bb; font-size: 13px; line-height: 1.8; }
+    .excluded { margin-top: 46px; }
+    .excluded h3 { margin: 0 0 14px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .excluded-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.55fr) minmax(0, 1.45fr);
+      gap: 26px;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,255,255,.18);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .excluded-row strong { color: var(--signal); }
+    .excluded-row span { color: #b9bfc4; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 32px var(--page-x);
+      color: var(--ink-soft);
+      background: var(--paper);
+      border-top: 1px solid var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    footer a { text-underline-offset: 4px; }
+
+    .status-message {
+      padding: 70px var(--page-x);
+      color: var(--signal);
+      font-weight: 800;
+    }
+    @keyframes row-in { to { opacity: 1; transform: translateY(0); } }
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > * { animation: hero-rise 700ms cubic-bezier(.2,.7,.2,1) both; }
+    .hero-content > :nth-child(2) { animation-delay: 90ms; }
+    .hero-content > :nth-child(3) { animation-delay: 180ms; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 72px minmax(0, 1fr); }
+      .date-spine strong { font-size: 112px; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .urgent-zone { grid-template-columns: 1fr; }
+      .urgent-label { border-right: 0; border-bottom: 1px solid rgba(16,20,25,.35); }
+      .urgent-item { padding-left: 0; grid-template-columns: minmax(120px,.55fr) minmax(180px,1.45fr) auto; }
+      .ledger-tools { grid-template-columns: 1fr; position: relative; }
+      .filters { justify-content: flex-start; }
+      .sale-row {
+        grid-template-columns: 40px minmax(130px,.75fr) minmax(220px,1.25fr) 80px 48px;
+      }
+      .condition { display: none; }
+      .audit { grid-template-columns: 1fr; }
+      .audit-title { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+    }
+    @media (max-width: 620px) {
+      :root { --page-x: 18px; }
+      .site-header { min-height: 58px; }
+      .header-meta span { display: none; }
+      .hero { min-height: auto; grid-template-columns: 1fr; }
+      .date-spine {
+        min-height: 72px;
+        justify-content: flex-start;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.2);
+      }
+      .date-spine strong {
+        position: relative;
+        inset: auto;
+        margin-left: 18px;
+        font-size: 51px;
+        transform: none;
+      }
+      .date-spine small { margin: 0 18px 18px auto; writing-mode: horizontal-tb; }
+      .hero-content { padding: 54px var(--page-x) 66px; }
+      h1 { font-size: clamp(48px, 17vw, 74px); }
+      .hero-stat strong { font-size: 68px; }
+      .hero-copy { font-size: 14px; }
+      .urgent-item { grid-template-columns: 1fr auto; gap: 4px 16px; padding: 17px 0; }
+      .urgent-item span { grid-column: 1 / -1; grid-row: 2; }
+      .ledger-head { padding-top: 68px; }
+      .filter { flex: 1 1 calc(50% - 7px); }
+      .result-meta { align-items: flex-start; flex-direction: column; }
+      .sale-row {
+        grid-template-columns: 32px 1fr 48px;
+        gap: 10px 14px;
+        min-height: 132px;
+        padding-top: 20px;
+        padding-bottom: 22px;
+      }
+      .brand-name { grid-column: 2; }
+      .offer { grid-column: 2 / 4; }
+      .discount { grid-column: 2; justify-self: start; font-size: 26px; }
+      .visit { grid-column: 3; grid-row: 1 / 3; }
+      .audit-title, .audit-body { padding-top: 62px; padding-bottom: 62px; }
+      .audit-metrics { grid-template-columns: 1fr; }
+      .metric { border-bottom: 1px solid rgba(255,255,255,.18); }
+      .audit-copy { grid-template-columns: 1fr; }
+      .excluded-row { grid-template-columns: 1fr; gap: 5px; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+      .sale-row { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="#top">DOMESTIC<span>//</span>SALE</a>
+    <div class="header-meta">
+      <span>Official-store scan</span>
+      <a class="header-link" href="https://github.com/pinion05/domestic-brand-sale-scan">GitHub ↗</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="date-spine" aria-hidden="true">
+        <strong>07·20</strong>
+        <small>Verified in Seoul</small>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">2026.07.20 / Official stores only</p>
+        <h1 id="page-title">Sale<em>Ledger</em></h1>
+        <div class="hero-bottom">
+          <div class="hero-stat">
+            <strong id="hero-count">52</strong>
+            <span>검증 후 남은 공식몰 세일</span>
+          </div>
+          <p class="hero-copy">플랫폼 행사를 걷어내고 브랜드 공식몰의 화면을 직접 렌더링했습니다. 세일 문구·할인율·기간·회원 조건 중 화면에서 확인된 정보만 그대로 기록한 하루짜리 스냅샷입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="urgent-zone" aria-labelledby="urgent-title">
+      <h2 class="urgent-label" id="urgent-title">Ends<br>today</h2>
+      <div class="urgent-list" id="urgent-list"></div>
+    </section>
+
+    <section class="ledger" aria-labelledby="ledger-title">
+      <div class="ledger-head">
+        <p class="section-kicker">Verified offer index</p>
+        <h2 id="ledger-title">The list</h2>
+      </div>
+      <div class="ledger-tools">
+        <div class="search-wrap">
+          <label for="search">SEARCH</label>
+          <input id="search" type="search" placeholder="브랜드 또는 세일명" autocomplete="off">
+        </div>
+        <div class="filters" role="group" aria-label="세일 목록 필터">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">전체 52</button>
+          <button class="filter" type="button" data-filter="exact" aria-pressed="false">할인율 확인 30</button>
+          <button class="filter" type="button" data-filter="page" aria-pressed="false">세일 페이지 22</button>
+          <button class="filter" type="button" data-filter="urgent" aria-pressed="false">오늘 종료 2</button>
+        </div>
+      </div>
+      <div class="result-meta" aria-live="polite">
+        <span id="result-count">52개 브랜드</span>
+        <span>최대 할인율 내림차순 · 최대율은 선택 품목 기준일 수 있음</span>
+      </div>
+      <div class="sale-list" id="sale-list"></div>
+      <div class="empty" id="empty" hidden>조건에 맞는 브랜드가 없습니다. 검색어 또는 필터를 바꿔보세요.</div>
+    </section>
+
+    <section class="audit" aria-labelledby="audit-title">
+      <div class="audit-title">
+        <p class="section-kicker">How this was checked</p>
+        <h2 id="audit-title">Audit<br>trail</h2>
+        <p>브랜드 랭킹 전체 페이지 수집부터 공식몰 검색 fallback, SPA 렌더링, 과거 연도와 잘못된 도메인 제거까지 같은 날 다시 실행했습니다.</p>
+      </div>
+      <div class="audit-body">
+        <div class="audit-metrics">
+          <div class="metric"><strong id="metric-candidates">384</strong><span>브랜드 후보</span></div>
+          <div class="metric"><strong id="metric-rendered">233</strong><span>렌더링 URL</span></div>
+          <div class="metric"><strong id="metric-final">52</strong><span>최종 브랜드</span></div>
+        </div>
+        <div class="audit-copy">
+          <div>
+            <h3>포함 기준</h3>
+            <p>공식몰 화면에서 시즌오프, 퍼센트 할인, 파이널 세일, 블랙프라이데이 또는 실제 할인 상품을 확인했습니다.</p>
+          </div>
+          <div>
+            <h3>주의</h3>
+            <p>이 페이지는 고정된 날짜의 스냅샷입니다. 최대 할인율은 일부 품목·회원·쿠폰 조건에만 적용될 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="excluded" id="excluded">
+          <h3>제외 로그</h3>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span id="verified-footer">Verified 2026-07-20 16:36 KST</span>
+    <span><a href="https://github.com/pinion05/domestic-brand-sale-scan/blob/main/reports/2026-07-20.md">날짜별 Markdown 보고서</a> · <a href="https://github.com/pinion05/domestic-brand-sale-scan">수집 파이프라인</a></span>
+  </footer>
+
+  <noscript><p class="status-message">JavaScript가 꺼져 있습니다. <a href="https://github.com/pinion05/domestic-brand-sale-scan/blob/main/reports/2026-07-20.md">Markdown 보고서</a>에서 전체 목록을 확인하세요.</p></noscript>
+
+  <script>
+    const state = { sales: [], filter: "all", query: "" };
+    const list = document.querySelector("#sale-list");
+    const empty = document.querySelector("#empty");
+    const resultCount = document.querySelector("#result-count");
+    const search = document.querySelector("#search");
+
+    const element = (tag, className, text) => {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    };
+
+    function visibleSales() {
+      const q = state.query.trim().toLocaleLowerCase("ko");
+      return state.sales.filter((sale) => {
+        const filterMatch = state.filter === "all"
+          || sale.tier === state.filter
+          || (state.filter === "urgent" && sale.urgent);
+        const queryMatch = !q || `${sale.brand} ${sale.offer} ${sale.condition}`.toLocaleLowerCase("ko").includes(q);
+        return filterMatch && queryMatch;
+      });
+    }
+
+    function renderList() {
+      const sales = visibleSales();
+      list.replaceChildren();
+      sales.forEach((sale, index) => {
+        const row = element("article", "sale-row");
+        row.style.setProperty("--bar", sale.max ? `${sale.max}%` : "0%");
+        row.style.setProperty("--delay", `${Math.min(index, 12) * 32}ms`);
+        row.dataset.tier = sale.tier;
+
+        row.append(element("span", "row-no", String(index + 1).padStart(2, "0")));
+        row.append(element("h3", "brand-name", sale.brand));
+        row.append(element("p", "offer", sale.offer));
+        row.append(element("p", "condition", sale.condition));
+        row.append(element("strong", `discount${sale.max ? "" : " is-open"}`, sale.max ? `${sale.max}%` : "OPEN"));
+
+        const link = element("a", "visit");
+        link.href = sale.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.setAttribute("aria-label", `${sale.brand} 공식몰 열기`);
+        link.append(element("span", "", "↗"));
+        row.append(link);
+        list.append(row);
+      });
+      resultCount.textContent = `${sales.length}개 브랜드`;
+      empty.hidden = sales.length !== 0;
+    }
+
+    function renderUrgent(sales) {
+      const urgentList = document.querySelector("#urgent-list");
+      urgentList.replaceChildren();
+      sales.filter((sale) => sale.urgent).forEach((sale) => {
+        const link = element("a", "urgent-item");
+        link.href = sale.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.append(element("strong", "", sale.brand));
+        link.append(element("span", "", sale.urgentCondition || sale.condition));
+        link.append(element("b", "", `${sale.urgentMax ?? sale.max}% ↗`));
+        urgentList.append(link);
+      });
+    }
+
+    function renderExcluded(groups) {
+      const root = document.querySelector("#excluded");
+      groups.forEach((group) => {
+        const row = element("div", "excluded-row");
+        row.append(element("strong", "", group.label));
+        row.append(element("span", "", group.items.join(" · ")));
+        root.append(row);
+      });
+    }
+
+    document.querySelectorAll(".filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.filter = button.dataset.filter;
+        document.querySelectorAll(".filter").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        renderList();
+      });
+    });
+    search.addEventListener("input", () => { state.query = search.value; renderList(); });
+
+    addEventListener("scroll", () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      document.documentElement.style.setProperty("--scroll", `${max > 0 ? (scrollY / max) * 100 : 0}%`);
+    }, { passive: true });
+
+    fetch("./sales-2026-07-20.json")
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((data) => {
+        state.sales = data.sales;
+        document.querySelector("#hero-count").textContent = data.source.finalBrands;
+        document.querySelector("#metric-candidates").textContent = data.source.brandCandidates;
+        document.querySelector("#metric-rendered").textContent = data.source.renderedUrls;
+        document.querySelector("#metric-final").textContent = data.source.finalBrands;
+        document.querySelector("#verified-footer").textContent = `Verified ${data.verifiedLabel}`;
+        renderUrgent(data.sales);
+        renderExcluded(data.excluded);
+        renderList();
+      })
+      .catch((error) => {
+        list.replaceChildren(element("p", "status-message", `목록을 불러오지 못했습니다: ${error.message}`));
+      });
+  </script>
+</body>
+</html>
