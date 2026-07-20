@@ -1,6 +1,6 @@
 ---
 name: domestic-brand-sale-scan
-description: 'Use when investigating which Korean domestic fashion brands are currently running sales/Black Friday on their OWN official stores (공홈), not platform-internal sales. Enumerate many brands at scale from a commerce platform (Musinsa primary source; 29CM/W컨셉/에이블리 also work), map each brand code to official-store domain, scan for live sale signals, verify by rendering. Triggers — 국내/도메스틱 브랜드 세일 조사, 도메스틱 브랜드 블프, which Korean brands are on sale now, 브랜드 메이커 공홈 세일.'
+description: 'Use when investigating which Korean domestic fashion brands currently run sales on their own official stores, especially broad multi-brand sweeps, 공홈 세일/블프/시즌오프 research, or requests that must exclude platform-internal promotions.'
 ---
 
 # Domestic Brand Sale Scan
@@ -9,10 +9,11 @@ description: 'Use when investigating which Korean domestic fashion brands are cu
 Find which Korean domestic fashion brands are running sales on their **official stores** (공홈), not platforms. Pipeline: enumerate brands at scale via Musinsa's API → map each to its official store → scan sale keywords → verify hits by rendering.
 
 **Core insights:**
-- **The Musinsa API/URL is ONE EXAMPLE — the real method is "capture the platform's own brand-list API → map brand identifier → official domain."** Other Korean commerce platforms (29CM, W컨셉, 에이블리, 지그재그) work the same way, but each needs its API captured fresh and its identifier type handled (see Phase 1/2).
-- Brand **English slug** codes often equal official-store domains (~50% hit) — probe first, it's fast. **Slug-only**: numeric IDs / Korean-name IDs don't resolve to domains.
-- `sale`/`coupon`/`clearance` keywords are cafe24/imweb shopping-skin noise — **filter to concrete signals only** (시즌오프, `%OFF`, 블랙프라이데이).
-- API capture beats scraping product cards (SPA = unstable).
+- **The Musinsa API/URL is ONE EXAMPLE — the real method is "capture the platform's own brand-list API → map brand identifier → official domain."** Other Korean commerce platforms need their own API captured fresh.
+- `brands.tsv` contains **domestic-fashion candidates**, not proven Korean brands. The parser subtracts known global/non-fashion slugs; identity and nationality still require verification.
+- English slugs often resemble official domains, but **HTTP 200 only means domain candidate**. A wrong company/parked site can return 200.
+- `sale`/`coupon`/`clearance` are shopping-skin noise. Keep concrete phrases, then require browser-visible evidence and a current-year/date check.
+- Raw HTML may retain stale hidden campaigns; SPA raw HTML may contain nothing. Rendering is the final evidence surface.
 
 **Tool requirement:** `agent-browser` is needed to **discover** the brand-list API (Phase 1, `network requests`) and to **render SPA stores** for verification (Phase 5). Once the API URL is known, Phase 1 enumeration runs with plain `curl` (the ranking API returns JSON) — so agent-browser is *discover + verify*, NOT *call*. curl-only still fails on SPA store verification (29CM, imweb) and on platforms whose API you haven't captured.
 
@@ -41,9 +42,9 @@ agent-browser network requests | grep client.musinsa
 
 ```bash
 ./scripts/fetch_all_brands.sh pages/                    # → pages/p1..p10.json
-./scripts/parse_brands.py pages/p*.json > brands.tsv    # 글로벌 필터 → 도메스틱 (~370)
+./scripts/parse_brands.py pages/p*.json > brands.tsv    # best-effort 국내 패션 후보 (~370)
 ```
-`parse_brands.py`는 `data.modules[].items[].info.brandName` + `onClickBrandName.url=/brand/{slug}` 추출 (sections 응답과 동일 구조).
+`parse_brands.py`는 `brandName` + `/brand/{slug}`를 추출하고 알려진 글로벌/비패션 slug만 제외한다. **실시간 랭킹은 전체 브랜드 카탈로그가 아니다.** 넓은 조사라면 여러 플랫폼 결과, 이전 실행 캐시, 주요 브랜드 seed를 합집합으로 사용한다.
 
 **⚠️ Platform generalization:** the `client.musinsa.com` URL + `parse_brands.py` schema (`data.modules[].items[].info`, `onClickBrandName.url=/brand/{slug}`) are **Musinsa-specific**. For 29CM/W컨셉/에이블리: capture THAT platform's brand-list API the same way (`network requests` on its ranking/brand page), and rewrite the parser for its response shape. Note the **identifier type**:
 - Musinsa, W컨셉, 에이블리 → English slug (`/brand/{slug}`) → Phase 2 probe works
@@ -61,54 +62,81 @@ mmlg badblood ootd they yeomim kinchi ufo cargobrosfiles'''.split())
 ```
 This whitelist is the **quality bottleneck** — curate it per request from your knowledge of the scene. If the user names a style, build the list first and state it.
 
-### Phase 2 — Map official stores (code → domain, ~50%)
+### Phase 2 — Map official-store candidates
+Probe every responding slug domain; do not silently accept the first HTTP 200:
 ```bash
-awk -F'\t' '{print $1}' brands.tsv | xargs -P 20 -I{} bash scripts/scan.sh {} > scan.tsv
+awk -F'\t' '{print $1}' brands.tsv \
+  | xargs -P 20 -I{} bash scripts/scan.sh --all {} > scan.tsv
 ```
-Misses (e.g. discusathletic, untapped) → search `"{브랜드명} 공식몰"` or try `code` + suffix (`studio`, `archive`, `kr`). Verify domain is the real brand (not a parked/other-company `.com`).
+`scan.sh --all` tries `.co.kr`, `.kr`, then `.com` and preserves full phrases (`UP TO 80%`, `FINAL SALE`) instead of truncating them to `Up`/`FINAL`.
 
-**⚠️ Slug-only — falls back to search otherwise.** If the platform's identifier is a numeric ID or Korean name (29CM `frontBrandNo`, some W컨셉 IDs), **skip `scan.sh` entirely** — `36324.com` is meaningless. Go straight to search-based mapping: `web_search "{브랜드명} 공식몰"` or fetch Naver `"{브랜드명} 공식스토어"`, then probe the found domain with the same keyword scan.
+Map misses through rate-limited search (results are still candidates):
+```bash
+./scripts/map_misses.py brands.tsv scan.tsv \
+  --cache search-cache.json > fallback-candidates.tsv
+```
+Verify each candidate using page brand name plus Korean company/address/business details. Search-result rank and HTTP 200 are insufficient. If a responding slug domain later fails identity review, put its code in `rejected-codes.txt` and force fallback search:
+```bash
+./scripts/map_misses.py brands.tsv scan.tsv --codes rejected-codes.txt \
+  --cache search-cache.json > rejected-fallback.tsv
+```
+Numeric/Korean platform IDs (e.g. 29CM `frontBrandNo`) skip slug probing and go directly to search mapping.
 
 ### Phase 3-4 — Scan + de-noise sale keywords
-`scan.sh` already counts keywords. **Filter to concrete signals only** (broad ones are skin noise):
+`scan.sh` pipes bodies through `extract_sale_signals.py`, which merges case variants and retains complete multiword matches. **Filter to concrete signals only**:
 
 | Keep (concrete) | Drop (skin noise) |
 |---|---|
 | 시즌오프, season off | `sale` alone (cart/footer text) |
 | 블랙프라이데이, black friday | `coupon` / 쿠폰 (member menu) |
-| final sale | `clearance` (cafe24 default) |
-| `X%할인`, `X% OFF`, `up to X%` | bare `outlet` |
-| `세일` keyword ≥15 hits (AFTER de-noise) | |
+| final sale, end of season sale | `clearance` (cafe24 default) |
+| `X%할인`, `X% OFF`, `up to X%`, `~X%` | bare `outlet` |
+| browser-visible `세일` ≥15 hits | |
 
-**⚠️ Pressure guard:** under speed/token pressure, cut Phase 1 **page count** or Phase 2 **target count** — NEVER the noise filter (Phase 3-4) or render-verify (Phase 5). Skipping them invalidates results: most raw `sale`/`coupon`/`clearance` are skin noise. The `세일 ≥15` threshold counts **concrete signals after de-noise**, not raw keyword totals (a brand with `sale(157)` raw is meaningless until filtered).
+**⚠️ Pressure guard:** under speed/token pressure, cut Phase 1 **page count** or Phase 2 **target count** — NEVER the noise filter (Phase 3-4) or render-verify (Phase 5). Skipping them invalidates results: most raw `sale`/`coupon`/`clearance` are skin noise. The `세일 ≥15` threshold is applied only to browser-visible Korean `세일`, never raw `sale` totals (a brand with `sale(157)` raw is meaningless until rendered).
 
-### Phase 5 — Verify by rendering
-- cafe24 (server-rendered) → curl body is enough. **Confirm cafe24 first** (`cafe24` in footer/img host `*.cafe24.com`/URL) — don't skip render on *assumption* under pressure.
-- **imweb / Next SPAs → must render:**
+### Phase 5 — Render, currentness-check, identity-check
+Render concrete slug hits and **all search-mapped SPA candidates**:
 ```bash
-agent-browser open "<url>"; agent-browser wait --load networkidle; agent-browser wait 2500
-agent-browser read | grep -oiE '시즌오프|up to [0-9]+%|[0-9]+%[ ]?off|black[ ]?friday' | sort | uniq -c
+./scripts/render_verify.sh scan.tsv rendered/ --jobs 5
+./scripts/render_verify.sh fallback-candidates.tsv fallback-rendered/ --jobs 5
 ```
+The renderer preserves TSV brand names with spaces, continues after recoverable `agent-browser open` timeouts, and writes `summary.tsv` plus visible text artifacts. Status meanings:
+
+| Status | Meaning / action |
+|---|---|
+| `visible-candidate` | Concrete phrase is browser-visible; still verify brand identity and terms |
+| `no-concrete-visible-signal` | Reject raw-only hit; do not report it |
+| `stale-year:YYYY` | Reject unless another clearly current campaign is visible |
+| `render-failed` | Retry; never downgrade to curl-only for an SPA |
+
+**Evidence strength:** date/expiry + `%` + terms = strong; current-season phrase + discounted products = medium; menu-only `SEASON OFF` = weak and report without a maximum; raw-only or past-year = reject.
 
 ## Gotchas
 | Issue | Fix |
 |---|---|
-| Scraping product cards (SPA) | Use API via `network requests` capture |
-| `sale`/`clearance` everywhere | Filter to concrete signals (table above) |
-| `code.com` ≠ brand (other company) | Verify domain; `.co.kr`/`.kr` higher Korean-confidence |
-| curl on SPA = empty | `agent-browser read` after networkidle |
-| context-mode blocks inline curl | `curl -s -o file` then parse in workspace |
-| Expecting summer "Black Friday" | Jul/Aug = 인디 brands do **시즌오프/아카이브세일**, 블프 is Nov. Set expectations. |
-| `agent-browser` unavailable | Phase 1 (API capture) & 5 (SPA verify) are BLOCKED. curl-only works only for server-rendered platforms w/ HTML sitemaps. State limit, don't silently degrade. |
-| Numeric/Korean brand IDs (29CM) | `scan.sh` code.com probe is slug-only; use search mapping (`브랜드명 공식몰`) instead |
-| Applying to a new platform | Re-capture THAT platform's brand-list API (`network requests`); don't reuse the Musinsa URL/parser verbatim |
-| Speed/token pressure | Cut page/target **COUNT**, never the noise filter or render-verify — skipping them invalidates results |
-| Japanese/global brands leaking into domestic list | `parse_brands.py` blocklist is best-effort; spot-check top hits for 국적 (mizuno=日, 등) |
+| `UP TO 80%` becomes `Up` | Use current `scan.sh`/`extract_sale_signals.py`; never tokenize matches with `awk '{print $2}'` |
+| A responding slug domain is unrelated | Use `scan.sh --all`; identity-review it, then search rejected codes with `map_misses.py --codes` |
+| Store rejects HTTP HEAD with 405 | Current `scan.sh` uses one GET for status + body; do not restore HEAD probing |
+| Global/beauty brands leak into `brands.tsv` | Treat rows as candidates; verify nationality/category |
+| Raw HTML contains sale, rendered page does not | Reject as hidden/stale |
+| Render shows a past-year sale | Reject with current-year guard |
+| curl on SPA is empty | Render every search-mapped SPA candidate |
+| Brand names with spaces break `xargs -n` | Use `render_verify.py` TSV parsing or NUL-delimited arguments |
+| `agent-browser open` times out | Page may still be usable; continue wait/read, then retry if text is empty |
+| Brave returns 429 | Keep sequential `--delay`/backoff and use `--cache` |
+| One ranking omits known brands | Union multiple platforms, prior cache, and curated seeds |
+| `agent-browser` unavailable | API discovery and SPA verification are blocked; state the limit |
+| Speed pressure | Cut target count, never de-noise/render verification |
 
-## Reference result (2026-07, full run)
-333 domestic brands → 234 store hits → 9 concrete signals → verified strong sales: 마뗑킴·마하그리드 (UP TO 80% OFF), IDWS 아이돈워너셀 (블랙프라이데이 BF-26), 올리브데올리브 (시즌오프 70%). Took ~10 min automated; manual brand-by-brand would've been hours. (2026-07 재검증: `fetch_all_brands.sh` 자동화 후 ~370개 재현 — 실시간 랭킹이라 ±변동. 수동 1페이지 호출 시 ~100개로 급감 = 페이지네이션 함정.)
+## Historical benchmark — never reuse as current evidence
+A 2026-07-20 run traversed 10 pages → 378 candidates → 260 responding slug-domain candidates; search mapped 36 additional misses and rendering produced 30 visible domestic-fashion sale candidates. Rankings and campaigns change hourly, so every new answer must rerun collection and rendering.
 
 ## Files
-- `scripts/fetch_all_brands.sh` — 전체 페이지 긁기 (최상위 `link.next` 루프, `/sections/200`) — **Phase 1 필수**
-- `scripts/parse_brands.py` — Musinsa API JSON → domestic brand TSV
-- `scripts/scan.sh` — code → official-domain probe + sale-keyword count
+- `scripts/fetch_all_brands.sh` — full pagination via top-level `link.next`
+- `scripts/parse_brands.py` — Musinsa JSON → best-effort domestic-fashion candidate TSV
+- `scripts/extract_sale_signals.py` — full-phrase, case-folded signal counts
+- `scripts/scan.sh` — single-GET slug-domain candidate probing (`--all` recommended)
+- `scripts/map_misses.py` — Brave fallback with filtering, delay, retry, cache, rejected-code override
+- `scripts/render_verify.py` / `.sh` — concurrent rendering, timeout recovery, visible/current-year summary
+- `tests/test_scripts.py` — regression tests

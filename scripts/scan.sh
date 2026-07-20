@@ -1,19 +1,37 @@
-#!/bin/bash
-# Probe official store for a brand code, count sale keywords.
-# Usage: scan.sh <brand_code>
-# Output TSV: code \t domain(or -) \t httpcode \t keywordcounts(or -)
-code="$1"
+#!/usr/bin/env bash
+# Probe same-slug domain CANDIDATES and count sale phrases.
+# A 200 response is not proof of an official store; render and identity-check it.
+# Usage: scan.sh [--all] <brand_code>
+# Output TSV: code \t candidate-domain(or -) \t httpcode \t keywordcounts(or -)
+set -u
+
+all=0
+if [ "${1:-}" = "--all" ]; then
+  all=1
+  shift
+fi
+code="${1:?Usage: scan.sh [--all] <brand_code>}"
+script_dir="$(cd "$(dirname "$0")" && pwd)"
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0 Safari/537.36"
-KW='세일|시즌[ :]*오프|할인|행사|sale|쿠폰|coupon|clearance|outlet|아웃렛|블랙[ -]?프라이데이|black[ -]?friday|final[ -]?sale|up to [0-9]+%|[0-9]+%[ ]*(할인|off|오프)'
-for dom in "$code.com" "$code.co.kr" "$code.kr"; do
+found=0
+
+# Korean ccTLDs are higher-confidence candidates. --all avoids silently
+# accepting the first unrelated domain that happens to return HTTP 200.
+for dom in "$code.co.kr" "$code.kr" "$code.com"; do
   url="https://$dom"
-  hc=$(curl -sI -L --max-time 7 -A "$UA" "$url" -o /dev/null -w "%{http_code}" 2>/dev/null)
+  body_file=$(mktemp "${TMPDIR:-/tmp}/sale-scan.XXXXXX")
+  # One GET both catches sites that reject HEAD and avoids downloading twice.
+  hc=$(curl -s -L --max-time 12 -A "$UA" "$url" -o "$body_file" -w "%{http_code}" 2>/dev/null)
   if [ "$hc" = "200" ] || [ "$hc" = "201" ]; then
-    body=$(curl -s -L --max-time 12 -A "$UA" "$url" 2>/dev/null)
-    hits=$(printf '%s' "$body" | grep -oiE "$KW" | sort | uniq -c | sort -rn \
-           | awk '{print $2"("$1")"}' | tr '\n' ',' | sed 's/,$//')
+    hits=$(python3 "$script_dir/extract_sale_signals.py" < "$body_file")
+    [ -n "$hits" ] || hits="-"
     printf '%s\t%s\t%s\t%s\n' "$code" "$dom" "$hc" "$hits"
-    exit 0
+    found=1
+    rm -f "$body_file"
+    [ "$all" -eq 1 ] || exit 0
+  else
+    rm -f "$body_file"
   fi
 done
-printf '%s\t-\t-\t-\n' "$code"
+
+[ "$found" -eq 1 ] || printf '%s\t-\t-\t-\n' "$code"

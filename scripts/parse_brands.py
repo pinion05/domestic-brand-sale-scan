@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Musinsa ranking API JSON files -> domestic-brand TSV (filters known globals).
+"""Musinsa ranking API JSON files -> domestic-fashion CANDIDATE TSV.
+
+This is a best-effort exclusion filter, not proof of brand nationality/category.
 Usage: parse_brands.py page1.json page2.json ... > brands.tsv
 Output cols: code \\t brandName \\t freq  (sorted by frequency desc)
 """
 import json, sys, glob
 
-GLOBAL = set('''nike adidas puma converse vans newbalance nb asics salomon oakley
+GLOBAL = {x.lower() for x in '''nike adidas puma converse vans newbalance nb asics salomon oakley
 underarmour ua reebok fila champion carhartt carharttwip stussy supreme
 thenorthface northface patagonia columbia arcteryx hugoboss lacoste ralphlauren
 ralphlaurenpolo calvinklein calvinkleinjeans tommyhilfiger tommy gshock casio
@@ -18,13 +20,20 @@ rockfish oofos
 mizuno onitsuka onitsukatiger uniqlo gu muji beams unitedarrows urbanresearch
 gap zara hm cos arket superdry gstar diesel dsquared nautica lecoqsportif
 fredperry bensherman ecco geox fossil katespade toryburch longchamp samsonite
-rimowa eastpak herschel fidlock kappa diadora Ellesse macpac aritzia jcrew
-bananarepublic oldnavy abercrombie holister''' .split())
+rimowa eastpak herschel fidlock kappa diadora ellesse macpac aritzia jcrew
+bananarepublic oldnavy abercrombie hollister boss brooksbrothers camper dynafit
+guess islandslipper jansport malibusandals merrell spyder archies
+marithefrancoisgirbaud''' .split()}
+
+NON_FASHION = set('''beautyofjoseon cleardea torriden toun28 tfit mildlab teazen
+divein toocoolforschool javindeseoul aestura nars mac oddtype'''.split())
+EXCLUDE = GLOBAL | NON_FASHION
 
 brands = {}
 files = []
 for pat in sys.argv[1:]:
     files += glob.glob(pat)
+files = list(dict.fromkeys(files))
 for f in files:
     try:
         d = json.load(open(f))
@@ -43,7 +52,7 @@ for f in files:
 
 for bid, (bn, fq) in sorted(brands.items(), key=lambda x: -x[1][1]):
     lb = bid.lower()
-    if lb in GLOBAL: continue
+    if lb in EXCLUDE: continue
     if 'blackpink' in lb or 'hearts2hearts' in lb or 'republicofkorea' in lb:
         continue
     print(f'{bid}\t{bn}\t{fq}')

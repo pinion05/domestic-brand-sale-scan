@@ -1,98 +1,161 @@
 # domestic-brand-sale-scan
 
-국내(도메스틱) 패션 브랜드 중 **공식 스토어(공홈)** 에서 세일/시즌오프/블랙프라이데이를 돌리는 곳을 대량으로 조사하는 파이프라인.
+국내 패션 브랜드 중 **자사 공식 스토어(공홈)** 에서 현재 세일·시즌오프·블랙프라이데이를 진행하는 곳을 대량 조사하는 파이프라인이다. 무신사·29CM 같은 플랫폼 내부 행사는 제외한다.
 
-커머스 플랫폼(무신사/29CM/W컨셉/에이블리) 내부 세일이 아니라, 브랜드 **자사 공식몰** 의 세일만 찾는 게 핵심이다. 플랫폼의 브랜드 목록 API를 잡아 → 브랜드 식별자를 공식몰 도메인으로 매핑 → 세일 키워드를 스캔 → SPA 렌더링으로 검증한다.
+> 원래 `pi` 코딩 에이전트용 [스킬](SKILL.md)로 만들었지만, 수집·검색·검증 스크립트는 독립적으로 실행할 수 있다.
 
-> 원래 `pi` (코딩 에이전트) 의 [스킬](SKILL.md) 로 만들어졌지만, 스크립트 자체는 독립적으로 동작한다.
+## 핵심 원칙
 
-## 왜 필요한가
-
-- "국내 브랜드 중 지금 세일/블프 하는 곳 조사해줘" → 브랜드가 수백 개라 한땀한땀 열어보긴 불가능
-- 플랫폼(무신사 등) 화면에 보이는 세일은 플랫폼 내부 행사인 경우가 대부분. 진짜 **공홈 세일** 을 찾으려면 공식몰을 직접 봐야 한다
-- 브랜드 영문 slug 코드가 공식몰 도메인과 일치하는 경우가 ~50% → 이걸 빠르게 프로브하면 된다
+- `brands.tsv`는 **국내 패션 후보군**이다. 국적과 카테고리가 확정된 목록이 아니다.
+- slug 도메인의 HTTP 200 응답은 **공식몰 후보**일 뿐이다. 브랜드명·법인·한국 사업자 정보를 확인해야 한다.
+- raw HTML의 `sale`, `coupon`, `clearance`는 쇼핑몰 스킨 노이즈일 수 있다.
+- raw HTML에만 남은 세일은 과거 캠페인일 수 있고, SPA의 raw HTML은 비어 있을 수 있다. 최종 근거는 브라우저 가시 텍스트다.
+- 실시간 랭킹은 전체 브랜드 카탈로그가 아니다. 넓은 조사는 여러 플랫폼·이전 캐시·주요 브랜드 seed의 합집합이 필요하다.
 
 ## 파이프라인
 
+```text
+플랫폼 브랜드 API 전체 페이지 수집
+  → 국내 패션 후보 추출
+  → slug 도메인 후보 전체 프로브
+  → 검색 fallback
+  → 세일 문구 de-noise
+  → agent-browser 병렬 렌더링
+  → 현재 연도·브랜드 정체성·조건 최종 검증
 ```
-Phase 1  플랫폼 브랜드 목록 API 캡처 → 전체 페이지 긁기 (fetch_all_brands.sh)
-Phase 2  브랜드 code → 공식몰 도메인 프로브 (scan.sh)
-Phase 3  각 도메인 세일 키워드 카운트 (scan.sh)
-Phase 4  노이즈 필터 (sale/coupon/clearance 스킨 텍스트 제거)
-Phase 5  SPA 스토어는 렌더링으로 검증 (agent-browser)
-```
-
-### 핵심 함정들 (이걸 놓치면 결과가 1/3로 떨어진다)
-
-1. **페이지네이션**: `/pans/ranking`(overview) 응답엔 다음 페이지가 없다. 실제 리스트는 `/sections/200` 엔드포인트고, 다음 페이지는 **최상위 `link.next`** (`d['link']['next']`) 를 따라가야 한다. `data.link.next` / `hasNext` 는 거짓. → 그래서 `fetch_all_brands.sh` 가 자동 루프를 돈다
-2. **세일 키워드 노이즈**: `sale` / `coupon` / `clearance` 는 cafe24/imweb 쇼핑몰 스킨의 기본 텍스트라 어디서든 등장한다. **구체 신호만 남긴다**: `시즌오프`, `% OFF`, `up to X%`, `블랙프라이데이`, `final sale`
-3. **브랜드 ID 타입**: 무신사/W컨셉/에이블리는 영문 slug (`/brand/{slug}`) 라 `code.com` 프로브가 통한다. 29CM는 숫자 `frontBrandNo` (`/store/brand/36324`) 라 프로브가 무의미 → 검색 매핑으로 가야 한다
-4. **SPA 스토어**: imweb / Next 기반 공식몰은 curl 하면 빈 HTML 이 온다. 반드시 렌더링(`agent-browser`) 후 DOM 을 읽어야 한다
 
 ## 스크립트
 
-| 파일 | 설명 |
+| 파일 | 역할 |
 |---|---|
-| `scripts/fetch_all_brands.sh` | 무신사 랭킹 전체 페이지 긁기 (최상위 `link.next` 루프, `/sections/200`). Phase 1 필수 |
-| `scripts/parse_brands.py` | 무신사 API JSON → 도메스틱 브랜드 TSV (글로벌 브랜드/아이돌 블록리스트 필터) |
-| `scripts/scan.sh` | 브랜드 code → 공식몰 도메인 프로브 + 세일 키워드 카운트 |
+| `scripts/fetch_all_brands.sh` | 무신사 `/sections/200` 전체 페이지 수집. 최상위 `link.next`를 따라감 |
+| `scripts/parse_brands.py` | API JSON → best-effort 국내 패션 후보 TSV |
+| `scripts/extract_sale_signals.py` | `UP TO 80%`, `FINAL SALE` 같은 다단어 신호를 보존·집계 |
+| `scripts/scan.sh` | `.co.kr`, `.kr`, `.com` slug 도메인 후보 프로브. `--all` 권장 |
+| `scripts/map_misses.py` | Brave 검색 fallback, 마켓플레이스 필터, rate limit/backoff, 캐시 |
+| `scripts/render_verify.py` | `agent-browser` 병렬 렌더링, 타임아웃 복구, 가시 신호·과거 연도 요약 |
+| `scripts/render_verify.sh` | 렌더러 실행 래퍼 |
+| `tests/test_scripts.py` | 회귀 테스트 |
+
+## 요구 사항
+
+- Python 3.9+
+- `curl`, `awk`, `xargs`, Bash
+- [`agent-browser`](https://github.com/vercel-labs/agent-browser): API 발견 및 SPA 렌더링 검증
+- `BRAVE_API_KEY`: 검색 fallback을 사용할 때만 필요
+
+처음 `agent-browser`를 사용할 때는 설치 버전에 맞는 가이드를 먼저 확인한다.
+
+```bash
+agent-browser skills get core
+```
 
 ## 사용법
 
+### 1. 브랜드 전체 페이지 수집
+
+무신사 랭킹 페이지에서 `agent-browser network requests`로 현재 API를 확인한 뒤 실행한다.
+
 ```bash
-# Phase 1: 무신사 실시간 랭キング 전체 긁기
-./scripts/fetch_all_brands.sh pages/                    # → pages/p1..pN.json
-
-# Phase 1 (후): JSON → domestic brand TSV
-python3 scripts/parse_brands.py 'pages/p*.json' > brands.tsv   # code<TAB>brandName<TAB>freq
-
-# Phase 2-3: 각 브랜드 공식몰 프로브 + 세일 키워드 카운트 (병렬)
-awk -F'\t' '{print $1}' brands.tsv | xargs -P 20 -I{} bash scripts/scan.sh {} > scan.tsv
+./scripts/fetch_all_brands.sh pages/
+./scripts/parse_brands.py 'pages/p*.json' > brands.tsv
 ```
 
-`scan.tsv` 형태:
-```
-matinkim   matinkim.com    200    up to 80%(3),시즌오프(1)
-...
+출력 형식:
+
+```text
+code<TAB>brandName<TAB>frequency
 ```
 
-여기서 **구체 신호만** 거르면 진짜 세일 중인 브랜드가 나온다:
+### 2. slug 도메인 후보 프로브
 
-| Keep (구체) | Drop (스킨 노이즈) |
+```bash
+awk -F'\t' '{print $1}' brands.tsv \
+  | xargs -P 20 -I{} bash scripts/scan.sh --all {} > scan.tsv
+```
+
+`scan.sh`는 HEAD가 차단되는 사이트도 놓치지 않도록 한 번의 GET으로 상태와 본문을 함께 확인한다. 다단어 문구도 자르지 않는다.
+
+```text
+matinkim<TAB>matinkim.com<TAB>200<TAB>SEASON OFF(16),Up to 80%(2)
+```
+
+### 3. slug miss 검색 매핑
+
+```bash
+./scripts/map_misses.py brands.tsv scan.tsv \
+  --cache search-cache.json > fallback-candidates.tsv
+```
+
+기본 검색 간격은 1.1초이며 429 응답에는 backoff한다. 일시적인 검색 실패는 캐시에 영구 miss로 저장하지 않는다.
+
+slug 도메인이 응답했지만 다른 회사로 판정된 경우 해당 code를 다시 검색한다.
+
+```bash
+printf '%s\n' cornell > rejected-codes.txt
+./scripts/map_misses.py brands.tsv scan.tsv \
+  --codes rejected-codes.txt \
+  --cache search-cache.json > rejected-fallback.tsv
+```
+
+검색 결과 역시 공식몰 확정값이 아닌 후보이므로 렌더링 후 정체성을 확인한다.
+
+### 4. 브라우저 렌더링 검증
+
+```bash
+./scripts/render_verify.sh scan.tsv rendered/ --jobs 5
+./scripts/render_verify.sh fallback-candidates.tsv fallback-rendered/ --jobs 5
+```
+
+각 디렉터리에 페이지 텍스트·제목·최종 URL·오류 로그와 `summary.tsv`가 생성된다. 브랜드명에 공백이 있어도 TSV 열이 깨지지 않으며, `agent-browser open`이 타임아웃돼도 살아 있는 세션에서 읽기를 계속 시도한다.
+
+| 상태 | 의미 |
 |---|---|
-| `시즌오프`, `season off` | 단독 `sale` (장바구니/푸터) |
-| `블랙프라이데이`, `black friday` | `coupon` / 쿠폰 (멤버 메뉴) |
-| `final sale` | `clearance` (cafe24 기본) |
-| `X%할인`, `X% OFF`, `up to X%` | 단독 `outlet` |
+| `visible-candidate` | 구체적인 세일 문구가 화면에 보임. 브랜드 정체성과 조건은 추가 확인 |
+| `no-concrete-visible-signal` | raw-only 또는 스킨 노이즈. 보고 대상에서 제외 |
+| `stale-year:YYYY` | 과거 연도 캠페인 후보. 다른 현재 캠페인이 없다면 제외 |
+| `render-failed` | 재시도 필요. SPA를 curl 결과로 대체하면 안 됨 |
 
-## 의존성
+## 세일 신호 기준
 
-- `curl`, `python3`, `awk`, `xargs` (표준 Unix)
-- **`agent-browser`** (선택이지만 거의 필수): Phase 1 에서 브랜드 목록 API 를 **발견** 하고, Phase 5 에서 **SPA 공식몰을 렌더링 검증**. API URL 을 이미 알면 Phase 1 은 curl 로 되지만, SPA 스토어 검증은 반드시 렌더링이 필요하다
+| 유지 | 제거 |
+|---|---|
+| 시즌오프, `season off` | 단독 `sale` |
+| 블랙프라이데이, `black friday` | `coupon` / 쿠폰 |
+| `final sale`, `end of season sale` | 단독 `clearance` |
+| `X% 할인`, `X% OFF`, `up to X%`, `~X%` | 단독 `outlet` |
+| 브라우저 가시 텍스트의 `세일` 15회 이상 | raw HTML의 반복 횟수 |
+
+증거 강도는 다음처럼 구분한다.
+
+- **강함:** 현재 날짜·종료일·할인율·쿠폰 조건이 함께 노출
+- **중간:** 현재 시즌 세일 문구와 할인 상품이 함께 노출
+- **약함:** 메뉴에 `SEASON OFF`만 노출 — 최대 할인율을 추정하지 않음
+- **제외:** raw-only, 과거 연도, 브랜드 정체성 불일치
+
+## 테스트
+
+```bash
+python3 tests/test_scripts.py -v
+python3 -m py_compile scripts/*.py
+bash -n scripts/*.sh
+```
+
+테스트는 다단어 문구 보존, 단어 내부 오탐 방지, slug 후보 전체 프로브, 글로벌·비패션 제외, 검색 캐시 복구, 공백 포함 TSV, 렌더 타임아웃 및 과거 연도 판정을 검증한다.
 
 ## 다른 플랫폼에 적용하기
 
-무신사 API URL 과 `parse_brands.py` 스키마(`data.modules[].items[].info`, `onClickBrandName.url=/brand/{slug}`)는 **무신사 전용** 이다. 29CM/W컨셉/에이블리에 적용하려면:
+무신사 API URL과 JSON 스키마는 무신사 전용이다. 29CM·W컨셉·에이블리 등에 적용할 때는 해당 플랫폼의 브랜드 목록 API를 새로 캡처하고 응답 형태에 맞는 파서를 작성한다.
 
-1. 그 플랫폼의 랭킹/브랜드 페이지에서 `agent-browser network requests` 로 브랜드 목록 API 를 새로 캡처
-2. 응답 형태에 맞게 파서를 다시 짠다
-3. **식별자 타입** 확인:
-   - 영문 slug → Phase 2 프로브 가능
-   - 숫자 ID / 한글명 (29CM `frontBrandNo`) → `scan.sh` 프로브 스킵, 검색 매핑(`"{브랜드명} 공식몰"`) 으로
+- 영문 slug → 도메인 프로브 가능
+- 숫자 ID·한글 ID → slug 프로브를 건너뛰고 검색 매핑
+- 스타일 요청(스트릿·아메카지 등) → 플랫폼 데이터에 스타일 태그가 없다면 큐레이션된 slug whitelist로 후처리
 
-## 레퍼런스 결과 (2026-07)
+## 과거 벤치마크
 
-- 333 도메스틱 브랜드 → 234 스토어 히트 → 9 구체 신호 → 강한 세일 검증
-  - 마뗑킴·마하그리드 (UP TO 80% OFF)
-  - IDWS 아이돈워너셀 (블랙프라이데이 BF-26)
-  - 올리브데올리브 (시즌오프 70%)
-- 자동화 전체 런 ~10분. 수동 1페이지만 부르면 브랜드가 ~100개로 급감한다 (페이지네이션 함정)
+2026-07-20 실행에서 10페이지를 순회해 378개 초기 후보와 260개 응답 slug 도메인 후보를 얻었다. 검색 fallback과 렌더링 후 화면에 세일 신호가 보이는 국내 패션 후보 30개를 확인했다.
 
-## 한계
-
-- 무신사 랭킹 API엔 **스타일 필터가 없다** (`categoryCode` 는 상의/아우터 같은 상품 타입). 스트릿/여성복/아메카지 같은 스타일 스코프는 **큐레이션된 slug 화이트리스트** 로 사후 필터해야 한다. 안 하면 SPA/여성복 브랜드(spao, 8seconds, mixxo, mindbridge) 가 묵묵히 섞여 들어온다
-- `parse_brands.py` 의 글로벌 블록리스트는 best-effort. 상위 히트는 국적 스팟체크 권장 (mizuno=日 등)
-- 7~8월엔 "블랙프라이데이" 른 기대하면 안 된다 — 인디 브랜드는 **시즌오프/아카이브세일**, 블프는 11월
+랭킹과 캠페인은 수시로 변하므로 이 숫자나 당시 브랜드명을 현재 결과로 재사용하면 안 된다.
 
 ## 라이선스
 

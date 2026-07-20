@@ -3,6 +3,12 @@ pages/
 !scan*.json
 brands.tsv
 scan.tsv
+fallback-candidates.tsv
+rejected-fallback.tsv
+rejected-codes.txt
+rendered/
+fallback-rendered/
+search-cache.json
 __pycache__/
 *.pyc
 .DS_Store
