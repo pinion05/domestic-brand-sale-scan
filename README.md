@@ -13,6 +13,28 @@
 
 페이지에는 할인율이 확인된 30곳, 세일 페이지가 노출 중인 22곳, 제외 사유와 조사 범위를 함께 기록했다.
 
+## 익명 트래픽 계측
+
+GitHub Pages에는 Umami Cloud의 쿠키 없는 익명 계측을 적용했다. 브라우저의 Do Not Track 설정을 존중하며 Core Web Vitals를 함께 수집한다. 내부 검색에서는 **검색어 원문은 수집하지 않는다**.
+
+| 이벤트 | 의미 | 주요 속성 |
+|---|---|---|
+| `official_store_click` | 공식몰 링크 이동 | 브랜드, 할인 유형, 최대 할인율, 목록 위치 |
+| `filter_select` | 목록 필터 변경 | 필터, 결과 개수 |
+| `search_used` | 내부 검색 사용 | 필터, 결과 개수 |
+| `share_click` | 날짜별 보고서 공유 | 공유 방식, 보고서 날짜 |
+
+홍보 링크는 다음 규칙으로 생성한다.
+
+```text
+utm_source=threads|instagram|x|telegram|community
+utm_medium=social|messaging|community
+utm_campaign=daily_sale_YYYYMMDD
+utm_content=ends_today|top_discount|daily_report
+```
+
+사이트의 공유 버튼은 `utm_source=direct_share`, `utm_medium=referral`을 사용한다. 검색 노출과 클릭은 Google Search Console에서 별도로 확인하며 `docs/robots.txt`와 `docs/sitemap.xml`을 함께 배포한다. 현재 URL은 GitHub **프로젝트** Pages 경로이므로 `robots.txt`는 호스트 루트 정책으로 인정되지 않는다. sitemap은 Search Console에 직접 제출하고, `robots.txt`는 향후 커스텀 도메인 루트로 이전한다.
+
 ## 핵심 원칙
 
 - `brands.tsv`는 **국내 패션 후보군**이다. 국적과 카테고리가 확정된 목록이 아니다.
@@ -146,11 +168,12 @@ printf '%s\n' cornell > rejected-codes.txt
 
 ```bash
 python3 tests/test_scripts.py -v
+python3 tests/test_pages.py -v
 python3 -m py_compile scripts/*.py
 bash -n scripts/*.sh
 ```
 
-테스트는 gzip·CP949 입력, 다단어 문구 보존, 단어 내부 오탐 방지, slug 후보 전체 프로브, 글로벌·비패션 제외, 검색 캐시 복구, 공백 포함 TSV, 렌더 타임아웃과 캠페인/사업자 연도 구분을 검증한다.
+테스트는 gzip·CP949 입력, 다단어 문구 보존, 단어 내부 오탐 방지, slug 후보 전체 프로브, 글로벌·비패션 제외, 검색 캐시 복구, 공백 포함 TSV, 렌더 타임아웃과 캠페인/사업자 연도 구분을 검증한다. 페이지 테스트는 익명 계측 설정, 이벤트 개인정보 최소화, 공유 UTM, Search Console 및 sitemap 계약을 검증한다.
 
 ## 다른 플랫폼에 적용하기
 

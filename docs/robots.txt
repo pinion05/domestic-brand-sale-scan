@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pinion05.github.io/domestic-brand-sale-scan/sitemap.xml
