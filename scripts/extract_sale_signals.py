@@ -2,6 +2,7 @@
 """Extract sale-related phrases from HTML/text without truncating multiword matches."""
 
 from collections import Counter
+import gzip
 import re
 import sys
 from typing import Iterable, List, Tuple
@@ -73,8 +74,23 @@ def format_signals(signals: Iterable[Tuple[str, int]]) -> str:
     return ",".join(f"{phrase}({count})" for phrase, count in signals)
 
 
+def decode_body(data: bytes) -> str:
+    """Decode common Korean-store bodies without crashing the whole scan."""
+    if data.startswith(b"\x1f\x8b"):
+        try:
+            data = gzip.decompress(data)
+        except OSError:
+            pass
+    for encoding in ("utf-8", "cp949", "euc-kr"):
+        try:
+            return data.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    return data.decode("utf-8", errors="replace")
+
+
 def main() -> int:
-    text = sys.stdin.read()
+    text = decode_body(sys.stdin.buffer.read())
     print(format_signals(extract_signals(text)))
     return 0
 

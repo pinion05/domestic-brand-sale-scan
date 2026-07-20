@@ -21,7 +21,7 @@ for dom in "$code.co.kr" "$code.kr" "$code.com"; do
   url="https://$dom"
   body_file=$(mktemp "${TMPDIR:-/tmp}/sale-scan.XXXXXX")
   # One GET both catches sites that reject HEAD and avoids downloading twice.
-  hc=$(curl -s -L --max-time 12 -A "$UA" "$url" -o "$body_file" -w "%{http_code}" 2>/dev/null)
+  hc=$(curl -s --compressed -L --max-time 12 -A "$UA" "$url" -o "$body_file" -w "%{http_code}" 2>/dev/null)
   if [ "$hc" = "200" ] || [ "$hc" = "201" ]; then
     hits=$(python3 "$script_dir/extract_sale_signals.py" < "$body_file")
     [ -n "$hits" ] || hits="-"

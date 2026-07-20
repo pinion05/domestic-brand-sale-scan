@@ -30,7 +30,7 @@
 |---|---|
 | `scripts/fetch_all_brands.sh` | 무신사 `/sections/200` 전체 페이지 수집. 최상위 `link.next`를 따라감 |
 | `scripts/parse_brands.py` | API JSON → best-effort 국내 패션 후보 TSV |
-| `scripts/extract_sale_signals.py` | `UP TO 80%`, `FINAL SALE` 같은 다단어 신호를 보존·집계 |
+| `scripts/extract_sale_signals.py` | gzip·CP949/EUC-KR 본문을 안전하게 디코딩하고 다단어 신호를 보존·집계 |
 | `scripts/scan.sh` | `.co.kr`, `.kr`, `.com` slug 도메인 후보 프로브. `--all` 권장 |
 | `scripts/map_misses.py` | Brave 검색 fallback, 마켓플레이스 필터, rate limit/backoff, 캐시 |
 | `scripts/render_verify.py` | `agent-browser` 병렬 렌더링, 타임아웃 복구, 가시 신호·과거 연도 요약 |
@@ -74,7 +74,7 @@ awk -F'\t' '{print $1}' brands.tsv \
   | xargs -P 20 -I{} bash scripts/scan.sh --all {} > scan.tsv
 ```
 
-`scan.sh`는 HEAD가 차단되는 사이트도 놓치지 않도록 한 번의 GET으로 상태와 본문을 함께 확인한다. 다단어 문구도 자르지 않는다.
+`scan.sh`는 HEAD가 차단되는 사이트도 놓치지 않도록 한 번의 압축 지원 GET으로 상태와 본문을 함께 확인한다. gzip 및 UTF-8/CP949/EUC-KR 본문을 처리하며 다단어 문구도 자르지 않는다.
 
 ```text
 matinkim<TAB>matinkim.com<TAB>200<TAB>SEASON OFF(16),Up to 80%(2)
@@ -113,7 +113,7 @@ printf '%s\n' cornell > rejected-codes.txt
 |---|---|
 | `visible-candidate` | 구체적인 세일 문구가 화면에 보임. 브랜드 정체성과 조건은 추가 확인 |
 | `no-concrete-visible-signal` | raw-only 또는 스킨 노이즈. 보고 대상에서 제외 |
-| `stale-year:YYYY` | 과거 연도 캠페인 후보. 다른 현재 캠페인이 없다면 제외 |
+| `stale-year:YYYY` | 과거 연도 캠페인 후보. 사업자·통신판매·저작권 연도는 무시하며, 다른 현재 캠페인이 없다면 제외 |
 | `render-failed` | 재시도 필요. SPA를 curl 결과로 대체하면 안 됨 |
 
 ## 세일 신호 기준
@@ -141,7 +141,7 @@ python3 -m py_compile scripts/*.py
 bash -n scripts/*.sh
 ```
 
-테스트는 다단어 문구 보존, 단어 내부 오탐 방지, slug 후보 전체 프로브, 글로벌·비패션 제외, 검색 캐시 복구, 공백 포함 TSV, 렌더 타임아웃 및 과거 연도 판정을 검증한다.
+테스트는 gzip·CP949 입력, 다단어 문구 보존, 단어 내부 오탐 방지, slug 후보 전체 프로브, 글로벌·비패션 제외, 검색 캐시 복구, 공백 포함 TSV, 렌더 타임아웃과 캠페인/사업자 연도 구분을 검증한다.
 
 ## 다른 플랫폼에 적용하기
 

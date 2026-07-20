@@ -120,8 +120,9 @@ The renderer preserves TSV brand names with spaces, continues after recoverable 
 | Store rejects HTTP HEAD with 405 | Current `scan.sh` uses one GET for status + body; do not restore HEAD probing |
 | Global/beauty brands leak into `brands.tsv` | Treat rows as candidates; verify nationality/category |
 | Raw HTML contains sale, rendered page does not | Reject as hidden/stale |
-| Render shows a past-year sale | Reject with current-year guard |
+| Render shows a past-year sale | Reject with current-year guard; business-license/copyright years are ignored |
 | curl on SPA is empty | Render every search-mapped SPA candidate |
+| Body is gzip/CP949 and raises `UnicodeDecodeError` | Current extractor decompresses gzip and tries UTF-8/CP949/EUC-KR; do not use text-mode stdin |
 | Brand names with spaces break `xargs -n` | Use `render_verify.py` TSV parsing or NUL-delimited arguments |
 | `agent-browser open` times out | Page may still be usable; continue wait/read, then retry if text is empty |
 | Brave returns 429 | Keep sequential `--delay`/backoff and use `--cache` |
@@ -135,7 +136,7 @@ A 2026-07-20 run traversed 10 pages → 378 candidates → 260 responding slug-d
 ## Files
 - `scripts/fetch_all_brands.sh` — full pagination via top-level `link.next`
 - `scripts/parse_brands.py` — Musinsa JSON → best-effort domestic-fashion candidate TSV
-- `scripts/extract_sale_signals.py` — full-phrase, case-folded signal counts
+- `scripts/extract_sale_signals.py` — gzip/Korean-encoding-safe, full-phrase signal counts
 - `scripts/scan.sh` — single-GET slug-domain candidate probing (`--all` recommended)
 - `scripts/map_misses.py` — Brave fallback with filtering, delay, retry, cache, rejected-code override
 - `scripts/render_verify.py` / `.sh` — concurrent rendering, timeout recovery, visible/current-year summary

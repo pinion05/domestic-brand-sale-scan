@@ -83,15 +83,25 @@ def _command(args: list, timeout: int, errors: list) -> subprocess.CompletedProc
 def _stale_sale_years(text: str, current_year: int) -> List[int]:
     years = set()
     lines = [line.strip() for line in text.splitlines() if line.strip()]
+    footer_marker = re.compile(
+        r"business|license|mall-order|online order|copyright|address|사업자|통신판매|©",
+        re.IGNORECASE,
+    )
     for index, line in enumerate(lines):
         if not extract_signals(line, concrete_only=True):
             continue
         # Accessibility text may split one banner across a few adjacent lines.
-        context = " ".join(lines[max(0, index - 2): index + 3])
-        for raw_year in re.findall(r"\b20\d{2}\b", context):
-            year = int(raw_year)
-            if year < current_year:
-                years.add(year)
+        context_lines = lines[max(0, index - 2): index + 3]
+        context_years = {
+            int(raw_year)
+            for candidate in context_lines
+            if not footer_marker.search(candidate)
+            for raw_year in re.findall(r"\b20\d{2}\b", candidate)
+        }
+        # A current campaign year outranks unrelated older metadata nearby.
+        if current_year in context_years:
+            continue
+        years.update(year for year in context_years if year < current_year)
     return sorted(years)
 
 

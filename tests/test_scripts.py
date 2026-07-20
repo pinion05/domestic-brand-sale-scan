@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import gzip
 import importlib.util
 import json
 import os
@@ -62,6 +63,22 @@ class ExtractSaleSignalsTest(unittest.TestCase):
         self.assertEqual([], module.extract_signals(noise, concrete_only=True))
         valid = "SEASON-OFF | FINAL SALE | 20% OFF"
         self.assertEqual(3, len(module.extract_signals(valid, concrete_only=True)))
+
+    def test_cli_decodes_gzip_and_cp949_store_bodies(self):
+        script = SCRIPTS / "extract_sale_signals.py"
+        bodies = [
+            gzip.compress("SEASON OFF UP TO 70%".encode("utf-8")),
+            "시즌오프 최대 60%".encode("cp949"),
+        ]
+        expected = ["SEASON OFF(1)", "시즌오프(1)"]
+        for body, phrase in zip(bodies, expected):
+            result = subprocess.run(
+                [sys.executable, str(script)],
+                input=body,
+                capture_output=True,
+            )
+            self.assertEqual(0, result.returncode, result.stderr.decode(errors="replace"))
+            self.assertIn(phrase, result.stdout.decode("utf-8"))
 
 
 class ParseBrandsTest(unittest.TestCase):
@@ -215,6 +232,19 @@ class RenderCommandTest(unittest.TestCase):
         module = load_module("render_verify")
         text = "2025 wholesale catalog\nCurrent collection"
         self.assertEqual([], module._stale_sale_years(text, current_year=2026))
+
+    def test_stale_year_guard_ignores_business_license_years_and_prefers_current_campaign(self):
+        module = load_module("render_verify")
+        business_footer = (
+            "GET 10% OFF NOW WITH MEMBER PRICING.\n"
+            "BUSINESS LICENSE : 419-81-02856 MALL-ORDER LICENSE : 제 2023-서울중구-0647호"
+        )
+        current_campaign = (
+            "2016-Seoul Seongdong-00425\ncs@example.com\n"
+            "2026 여름 시즌오프\n최대 할인율 50%\n2026.07.16 ~ 2026.07.31"
+        )
+        self.assertEqual([], module._stale_sale_years(business_footer, current_year=2026))
+        self.assertEqual([], module._stale_sale_years(current_campaign, current_year=2026))
 
     def test_visible_korean_sale_threshold_matches_documented_rule(self):
         module = load_module("render_verify")
