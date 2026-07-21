@@ -835,7 +835,7 @@
       document.documentElement.style.setProperty("--scroll", `${max > 0 ? (scrollY / max) * 100 : 0}%`);
     }, { passive: true });
 
-    fetch("./sales-2026-07-20.json")
+    fetch("./sales-2026-07-21.json")
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();

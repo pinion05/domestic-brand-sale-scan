@@ -13,3 +13,21 @@ search-cache.json
 __pycache__/
 *.pyc
 .DS_Store
+
+# scan artifacts (intermediate)
+pages/
+rendered/
+seed-rendered/
+scan.tsv
+scan.err
+seed-scan.tsv
+seed-render-input.tsv
+render-input.tsv
+visible-keep.tsv
+missing-seeds.txt
+map.err
+render.err
+seed-render.err
+brands.tsv
+fallback-candidates.tsv
+search-cache.json
