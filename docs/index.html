@@ -613,14 +613,14 @@
           <input id="search" type="search" placeholder="브랜드 또는 세일명" autocomplete="off">
         </div>
         <div class="filters" role="group" aria-label="세일 목록 필터">
-          <button class="filter" type="button" data-filter="all" aria-pressed="true">전체 52</button>
-          <button class="filter" type="button" data-filter="exact" aria-pressed="false">할인율 확인 30</button>
-          <button class="filter" type="button" data-filter="page" aria-pressed="false">세일 페이지 22</button>
-          <button class="filter" type="button" data-filter="urgent" aria-pressed="false">오늘 종료 2</button>
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">전체 <span id="count-all">0</span></button>
+          <button class="filter" type="button" data-filter="exact" aria-pressed="false">할인율 확인 <span id="count-exact">0</span></button>
+          <button class="filter" type="button" data-filter="page" aria-pressed="false">세일 페이지 <span id="count-page">0</span></button>
+          <button class="filter" type="button" data-filter="urgent" aria-pressed="false">오늘 종료 <span id="count-urgent">0</span></button>
         </div>
       </div>
       <div class="result-meta" aria-live="polite">
-        <span id="result-count">52개 브랜드</span>
+        <span id="result-count">0개 브랜드</span>
         <span>최대 할인율 내림차순 · 최대율은 선택 품목 기준일 수 있음</span>
       </div>
       <div class="sale-list" id="sale-list"></div>
@@ -843,10 +843,18 @@
       .then((data) => {
         state.sales = data.sales;
         state.reportDate = data.verifiedAt.slice(0, 10);
+        const exact = data.sales.filter((s) => s.tier === "exact");
+        const page = data.sales.filter((s) => s.tier === "page");
+        const urgent = data.sales.filter((s) => s.urgent);
         document.querySelector("#hero-count").textContent = data.source.finalBrands;
         document.querySelector("#metric-candidates").textContent = data.source.brandCandidates;
         document.querySelector("#metric-rendered").textContent = data.source.renderedUrls;
         document.querySelector("#metric-final").textContent = data.source.finalBrands;
+        document.querySelector("#count-all").textContent = data.sales.length;
+        document.querySelector("#count-exact").textContent = exact.length;
+        document.querySelector("#count-page").textContent = page.length;
+        document.querySelector("#count-urgent").textContent = urgent.length;
+        document.querySelector("#result-count").textContent = `${data.sales.length}개 브랜드`;
         document.querySelector("#verified-footer").textContent = `Verified ${data.verifiedLabel}`;
         renderUrgent(data.sales);
         renderExcluded(data.excluded);
