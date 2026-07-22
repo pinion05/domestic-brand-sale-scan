@@ -40,6 +40,17 @@ REJECT = {
     "chasecult": "5% 쿠폰 — 멤버십 혜택",
     "anillo_dup": "duplicate",
     "beanpoleacc": "빈폴 액세서리 — SSFShop 플랫폼 (공식몰 아님)",
+    "att": "AT&T 미국 통신사 (att.com)",
+    "vuori": "신세계V 플랫폼 매장 (공식몰 아님, shinsegaev.com)",
+    "grove": "Grove Collaborative 홈/바디케어 (미국, grove.co 리다이렉트)",
+    "adidascombatsports": "글로벌 복싱/무술용품 (us.adidascombatsports.com)",
+    "cellfusionc": "스킨케어/뷰티 브랜드 (cellfusionc.com)",
+    "rense": "음모론/대안뉴스 사이트 (rense.com, 패션 아님)",
+    "atez": "공식몰 오픈 이벤트 5% — 신상품 멤버십 혜택",
+    "kantr": "전상품 추가 10% 할인쿠폰 — 멤버십 혜택",
+    "deara": "회원가입 시 5% 할인쿠폰 — 멤버십 혜택",
+    "skinb5": "호주 스킨케어/여드름 케어 브랜드 (skinb5.com)",
+    "ssfshop": "빈폴 액세서리 — SSFShop 플랫폼 (공식몰 아님)",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop

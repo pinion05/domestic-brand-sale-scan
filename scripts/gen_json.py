@@ -37,6 +37,8 @@ for s in sorted(page, key=lambda x: x["brand"]):
 
 # Count pages fetched
 pages_count = len(list((base / "pages").glob("p*.json")))
+brand_candidates = len((base / "brands.tsv").read_text(encoding="utf-8").splitlines())
+rendered_urls = len((base / "render-input-full.tsv").read_text(encoding="utf-8").splitlines())
 
 # Excluded groups
 excluded = [
@@ -55,8 +57,8 @@ doc = {
     "verifiedLabel": now_label,
     "source": {
         "rankingPages": pages_count,
-        "brandCandidates": 428,
-        "renderedUrls": 152,
+        "brandCandidates": brand_candidates,
+        "renderedUrls": rendered_urls,
         "finalBrands": len(exact) + len(page),
         "exactOffers": len(exact),
         "openSalePages": len(page),
