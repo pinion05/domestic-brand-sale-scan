@@ -32,3 +32,16 @@ seed-render.err
 brands.tsv
 fallback-candidates.tsv
 search-cache.json
+
+# 2026-07-24 daily artifacts (intermediate)
+new-brands.tsv
+new-scan.tsv
+new-scan.err
+new-concrete.tsv
+new-concrete-dedup.tsv
+merge.err
+registry-render.tsv
+render-input-full.tsv
+render-input-knowledge.tsv
+verified-new.tsv
+verified-new.err

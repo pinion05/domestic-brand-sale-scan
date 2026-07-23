@@ -16,7 +16,12 @@ exact = analysis["exact"]
 page = analysis["page"]
 
 sales = []
+# Deduplicate by brand name (keep highest-max / first occurrence).
+seen_brands = set()
 for s in sorted(exact, key=lambda x: (-(x["max"] or 0), x["brand"])):
+    if s["brand"] in seen_brands:
+        continue
+    seen_brands.add(s["brand"])
     sales.append({
         "brand": s["brand"],
         "url": s["url"],
@@ -26,6 +31,9 @@ for s in sorted(exact, key=lambda x: (-(x["max"] or 0), x["brand"])):
         "condition": s["condition"],
     })
 for s in sorted(page, key=lambda x: x["brand"]):
+    if s["brand"] in seen_brands:
+        continue
+    seen_brands.add(s["brand"])
     sales.append({
         "brand": s["brand"],
         "url": s["url"],
@@ -59,9 +67,9 @@ doc = {
         "rankingPages": pages_count,
         "brandCandidates": brand_candidates,
         "renderedUrls": rendered_urls,
-        "finalBrands": len(exact) + len(page),
-        "exactOffers": len(exact),
-        "openSalePages": len(page),
+        "finalBrands": len(sales),
+        "exactOffers": len([s for s in sales if s["tier"] == "exact"]),
+        "openSalePages": len([s for s in sales if s["tier"] == "page"]),
     },
     "sales": sales,
     "excluded": excluded,

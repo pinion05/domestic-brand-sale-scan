@@ -51,6 +51,18 @@ REJECT = {
     "deara": "회원가입 시 5% 할인쿠폰 — 멤버십 혜택",
     "skinb5": "호주 스킨케어/여드름 케어 브랜드 (skinb5.com)",
     "ssfshop": "빈폴 액세서리 — SSFShop 플랫폼 (공식몰 아님)",
+    "lloyd": "독일 신발 글로벌 브랜드 (lloyd.com, EUR 가격)",
+    "2xu": "호주 스포츠/컴프레션웨어 — 신규 10% 쿠폰 (멤버십 노이즈)",
+    "threecheers": "JOIN US +10% OFF COUPON — 멤버십 혜택",
+    "enzoblues": "KAKAO PLUS 10% OFF COUPON — 멤버십 혜택",
+    "auber": "첫 회원가입 10% OFF — 멤버십 혜택",
+    "momentus": "회원가입 15% 쿠폰 — 멤버십 혜택",
+    "blueing": "첫 회원가입 20% 쿠폰 — 멤버십 혜택",
+    "51percent": "신규 가입 10% 할인 — 멤버십 혜택",
+    "magoodgan": "신규가입 쿠폰 — 멤버십 혜택",
+    "they": "신규회원 쿠폰 — 멤버십 혜택",
+    "108pound": "Join us and Get 10% off — 멤버십 혜택",
+    "mmlg": "신규 회원 10% 할인쿠폰 — 멤버십 혜택",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop
@@ -83,6 +95,15 @@ def classify_tier(signals_field, max_pct):
     if SEASON_OFF_RE.search(signals_field) or FINAL_SALE_RE.search(signals_field) or BF_RE.search(signals_field):
         return "page"
     return "page"  # fallback
+
+
+# Membership-noise overrides: brands whose only % is a signup/coupon promo,
+# not a real product discount. Reclassify to "page" if a season/summer sale
+# banner exists, else drop entirely (handled in REJECT for pure-coupon brands).
+MEMBERSHIP_NOISE_CODES = {
+    "deheve": "KAKAO PLUS 10% — 멤버십; SEASON OFF 진짜 → page",
+    "ufcsport": "신규 10% 쿠폰 — 멤버십; SUMMER SALE 메뉴 → page",
+}
 
 
 def make_offer(signals_field, brand):
@@ -142,8 +163,15 @@ def main():
         
         max_pct = extract_max_percent(signals)
         tier = classify_tier(signals, max_pct)
-        offer = make_offer(signals, brand)
         condition = make_condition(signals, max_pct, tier)
+        offer = make_offer(signals, brand)
+
+        # Membership-noise override: real % is a signup/coupon, not a discount.
+        # Keep brand if a season/summer banner exists, but demote to page/null.
+        if code in MEMBERSHIP_NOISE_CODES:
+            max_pct = None
+            tier = "page"
+            condition = "할인율·종료일 미표기"
         
         url = final_url if final_url else input_url
         
