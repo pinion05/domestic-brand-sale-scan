@@ -45,3 +45,5 @@ render-input-full.tsv
 render-input-knowledge.tsv
 verified-new.tsv
 verified-new.err
+build.err
+render.log

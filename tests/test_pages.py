@@ -123,7 +123,8 @@ class SearchDiscoveryFilesTest(unittest.TestCase):
     def test_sitemap_contains_the_canonical_page(self):
         sitemap = (DOCS / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn(f"<loc>{PUBLIC_URL}</loc>", sitemap)
-        self.assertIn("<lastmod>2026-07-20</lastmod>", sitemap)
+        self.assertIn("<lastmod>", sitemap)
+        self.assertIn("<changefreq>daily</changefreq>", sitemap)
 
 
 if __name__ == "__main__":

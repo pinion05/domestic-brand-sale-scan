@@ -58,6 +58,14 @@ excluded = [
         "label": "도메인 불일치·글로벌·비패션",
         "items": sorted(analysis["rejected_global"]),
     },
+    {
+        "label": "멤버십/쿠폰 노이즈",
+        "items": sorted(analysis.get("rejected_noise", [])),
+    },
+    {
+        "label": "과거 캠페인·렌더 실패",
+        "items": sorted(analysis.get("rejected_stale", [])),
+    },
 ]
 
 doc = {
