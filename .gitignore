@@ -47,3 +47,5 @@ verified-new.tsv
 verified-new.err
 build.err
 render.log
+visible.tsv
+analysis.json
