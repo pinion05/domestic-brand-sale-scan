@@ -46,7 +46,9 @@ for s in sorted(page, key=lambda x: x["brand"]):
 # Count pages fetched
 pages_count = len(list((base / "pages").glob("p*.json")))
 brand_candidates = len((base / "brands.tsv").read_text(encoding="utf-8").splitlines())
-rendered_urls = len((base / "render-input-full.tsv").read_text(encoding="utf-8").splitlines())
+# Rendered URLs = rows actually rendered this run (from summary.tsv, minus header)
+summary_path = base / "rendered" / "summary.tsv"
+rendered_urls = max(0, len(summary_path.read_text(encoding="utf-8").splitlines()) - 1) if summary_path.exists() else 0
 
 # Excluded groups
 excluded = [

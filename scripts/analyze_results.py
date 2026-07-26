@@ -58,6 +58,20 @@ REJECT = {
     "auber": "첫 회원가입 10% OFF — 멤버십 혜택",
     "momentus": "회원가입 15% 쿠폰 — 멤버십 혜택",
     "blueing": "첫 회원가입 20% 쿠폰 — 멤버십 혜택",
+    "thebodyshop": "글로벌 뷰티 브랜드 (thebodyshop.co.kr)",
+    "andar": "요가/스포츠웨어 — 애슬레저 전문 (andar.co.kr)",
+    "subdued": "이탈리아 글로벌 SPA 브랜드 (kr.subdued.com)",
+    "wioe": "신규 가입 10% 할인 — 멤버십 혜택",
+    "universegarment": "신규가입 10% 쿠폰 — 멤버십 혜택",
+    "zzerosongzio": "신규가입 10% 쿠폰 — 멤버십 혜택",
+    "cargobros": "카카오플친 10% 할인쿠폰 — 멤버십 혜택",
+    "findkapoor": "신규가입 10% 쿠폰 — 멤버십 혜택",
+    "prodeshirt": "신규 회원가입 10% COUPON — 멤버십 혜택",
+    "dogmaehks": "신규가입 10% 쿠폰 — 멤버십 혜택",
+    "glamlady": "신규가입 5% 쿠폰 — 멤버십 혜택",
+    "judyn": "신규가입 5% 쿠폰 — 멤버십 혜택",
+    "levar": "신규가입 20% 쿠폰 — 멤버십 혜택",
+    "deheve": "KAKAO PLUS 10% OFF — 멤버십 혜택",
     "51percent": "신규 가입 10% 할인 — 멤버십 혜택",
     "magoodgan": "신규가입 쿠폰 — 멤버십 혜택",
     "they": "신규회원 쿠폰 — 멤버십 혜택",
@@ -101,7 +115,6 @@ def classify_tier(signals_field, max_pct):
 # not a real product discount. Reclassify to "page" if a season/summer sale
 # banner exists, else drop entirely (handled in REJECT for pure-coupon brands).
 MEMBERSHIP_NOISE_CODES = {
-    "deheve": "KAKAO PLUS 10% — 멤버십; SEASON OFF 진짜 → page",
     "ufcsport": "신규 10% 쿠폰 — 멤버십; SUMMER SALE 메뉴 → page",
 }
 
