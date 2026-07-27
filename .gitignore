@@ -55,3 +55,10 @@ rendered-combined/
 rendered-extra/
 render-input-registry.tsv
 render-input-registry-extra.tsv
+render-input-missing.tsv
+new-concrete-extra.tsv
+missing-codes.txt
+known.err
+filter.err
+dedupe.err
+reg.err

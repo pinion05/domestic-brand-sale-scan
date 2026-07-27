@@ -74,9 +74,24 @@ REJECT = {
     "deheve": "KAKAO PLUS 10% OFF — 멤버십 혜택",
     "51percent": "신규 가입 10% 할인 — 멤버십 혜택",
     "magoodgan": "신규가입 쿠폰 — 멤버십 혜택",
-    "they": "신규회원 쿠폰 — 멤버십 혜택",
     "108pound": "Join us and Get 10% off — 멤버십 혜택",
     "mmlg": "신규 회원 10% 할인쿠폰 — 멤버십 혜택",
+    "xero": "글로벌 회계 소프트웨어 (xero.com, 패션 아님)",
+    "helinox": "헬리녹스 미국 글로벌 사이트 (helinox.com) — 첫 구매 10% 뉴스레터 가입혜택",
+    "triconix": "탈모/헤어케어 브랜드 (샴푸·두피앰플, 패션 아님)",
+    "kitschnkiss": "신규 회원 30% off coupon — 멤버십 혜택",
+    "gocce": "회원 20% 할인 (회원가입 전용) — 멤버십 혜택",
+    "positano": "회원가입 시 10% 할인쿠폰 — 멤버십 혜택",
+    "heretic": "JOIN NOW & GET 10% OFF COUPON — 멤버십 혜택",
+    "ndod": "신규 회원 전용 10% 할인 쿠폰 — 멤버십 혜택",
+    "denmade": "카카오톡 플러스친구 추가 시 15% 할인 쿠폰 — 멤버십 혜택",
+    "findkapoor": "JULY BEST 20 GET 10% OFF + MEMBERSHIP 10% — 멤버십 혜택",
+    "magoodgan": "신규가입 10% 할인 쿠폰 — 멤버십 혜택",
+    "hazzys1": "시즌오프 네비게이션 메뉴 + 멤버십 최대 15% — 메뉴/멤버십 노이즈",
+    "doffjason": "BLACK FRIDAY 카테고리 메뉴 + 신규 첫구매 10% 쿠폰 — 메뉴/멤버십 노이즈",
+    "maninstore": "BLACK FRIDAY 카테고리 메뉴 (할인율 미표기) — 메뉴 노이즈",
+    "elago": "폰 케이스/액세서리 브랜드 (갤럭시·버즈 케이스, 패션 아님)",
+    "heavenlyjelly_dup": "duplicate",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop
@@ -116,6 +131,7 @@ def classify_tier(signals_field, max_pct):
 # banner exists, else drop entirely (handled in REJECT for pure-coupon brands).
 MEMBERSHIP_NOISE_CODES = {
     "ufcsport": "신규 10% 쿠폰 — 멤버십; SUMMER SALE 메뉴 → page",
+    "they": "99데이 SALE 진행 (9900원~ 특가); 10%는 신규회원 쿠폰 → page/null",
 }
 
 
@@ -159,7 +175,7 @@ def main():
             continue
         code, brand, input_url, final_url, status, signals, artifact = f[:7]
         
-        if status == "stale-year":
+        if status.startswith("stale-year"):
             rejected_stale.append(f"{brand} ({status})")
             continue
         if status != "visible-candidate":

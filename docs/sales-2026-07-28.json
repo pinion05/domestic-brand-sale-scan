@@ -1,0 +1,1130 @@
+{
+  "verifiedAt": "2026-07-28T08:47:02+09:00",
+  "verifiedLabel": "2026-07-28 08:47 KST",
+  "source": {
+    "rankingPages": 10,
+    "brandCandidates": 445,
+    "renderedUrls": 206,
+    "finalBrands": 127,
+    "exactOffers": 88,
+    "openSalePages": 39
+  },
+  "sales": [
+    {
+      "brand": "엘리자베스 스튜어트",
+      "url": "https://elizabethstuart.co.kr/",
+      "offer": "UP TO 94%(1) · ~94%(1)",
+      "max": 94,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "마인드브릿지",
+      "url": "https://tbhshop.co.kr/",
+      "offer": "SEASON OFF(4) · 10% 할인(2) · ~10%(2) · 최대 50%(2) · up to 10%(1) · up to 49%(1)",
+      "max": 92,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "씨타",
+      "url": "https://citta.co.kr/",
+      "offer": "UP TO 90%(2)",
+      "max": 90,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아웃스탠딩",
+      "url": "https://outstanding.kr/",
+      "offer": "최대 52%(2) · 30% 할인(1) · ~90%(1)",
+      "max": 90,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "에어릿",
+      "url": "https://airitsports.com/",
+      "offer": "Up to 10%(1) · ~90%(1)",
+      "max": 90,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "엘칸토",
+      "url": "https://elcanto.co.kr/",
+      "offer": "10% 할인(2) · 5% 할인(2) · UP TO 80%(2) · ~65%(2) · ~89%(2)",
+      "max": 89,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "에스티코",
+      "url": "https://www.stco.co.kr/",
+      "offer": "15% OFF(2) · 30% OFF(1) · 70% OFF(1) · Up to 70%(1) · Up to 87%(1) · 시즌 오프(1)",
+      "max": 87,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "23.65",
+      "url": "https://23-65.com/",
+      "offer": "53% 할인(16) · SEASON OFF(12) · 60% 할인(4) · 65% 할인(4) · 58% 할인(2) · UP TO 86%(2)",
+      "max": 86,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "키르시",
+      "url": "https://kirsh.co.kr/",
+      "offer": "SEASON OFF(4) · ~83%(3)",
+      "max": 83,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "라메레이",
+      "url": "https://lamerei.com/",
+      "offer": "SEASON OFF(13) · ~80%(12)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "르멘트",
+      "url": "https://lement.kr/",
+      "offer": "UP TO 80%(8) · ~ 51%(2) · ~ 70%(1)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "마뗑킴",
+      "url": "https://matinkim.com/product/list.html?cate_no=214",
+      "offer": "Season Off(1) · Up to 80%(1)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "마하그리드",
+      "url": "https://mahagrid.com/",
+      "offer": "80% OFF(2)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "몬츄라",
+      "url": "https://www.montura.kr/",
+      "offer": "최대 80%(2)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "미스테리어스호텔",
+      "url": "https://themysterioushotel.com/",
+      "offer": "UP TO 80%(3)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아옵트",
+      "url": "https://www.aopt.kr/",
+      "offer": "UP TO 80%(1)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "알키알카",
+      "url": "https://alkialka.com/",
+      "offer": "5% 할인(1) · UP TO 80%(1)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "위띠아",
+      "url": "https://wettia.com/",
+      "offer": "UP TO 80%(1) · ~80%(1)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "유니폼브릿지",
+      "url": "https://uniformbridge.com/",
+      "offer": "최대 80%(1)",
+      "max": 80,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아레나",
+      "url": "https://arena.co.kr/",
+      "offer": "UP TO 70%(2) · UPTO 76%(1)",
+      "max": 76,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "제로스트릿",
+      "url": "https://zerostreet.co.kr/",
+      "offer": "~75%(1)",
+      "max": 75,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "디유아모르",
+      "url": "https://dieuamour.co.kr/",
+      "offer": "5% 할인(16) · ~73%(1)",
+      "max": 73,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "마르헨제이",
+      "url": "https://marhenj.co.kr/",
+      "offer": "시즌오프(1) · 최대 73%(1)",
+      "max": 73,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "세인트새틴",
+      "url": "https://saintsatin.co.kr/",
+      "offer": "~72%(1)",
+      "max": 72,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "티세르",
+      "url": "https://teser.co.kr/",
+      "offer": "UP TO 72%(8) · 5% 할인(1)",
+      "max": 72,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "오브제",
+      "url": "https://obge.co.kr/",
+      "offer": "UP TO 71%(1)",
+      "max": 71,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "스키즘 인듀싱",
+      "url": "https://schisminducing.com/",
+      "offer": "UP TO 70%(4)",
+      "max": 70,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "키코지",
+      "url": "https://kikozy.kr/",
+      "offer": "~ 70%(1)",
+      "max": 70,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "핑크존",
+      "url": "https://pinkzone.co.kr/",
+      "offer": "최대 64%(19) · 최대 66%(5) · 5% OFF(2)",
+      "max": 66,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "오르시떼",
+      "url": "https://orcite.co.kr/",
+      "offer": "up to 65%(1) · 시즌 오프(1)",
+      "max": 65,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "제이엘브",
+      "url": "https://jeleve.co.kr/",
+      "offer": "SEASONOFF(1) · Up to 35%(1) · Up to 65%(1)",
+      "max": 65,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "게스언더웨어",
+      "url": "https://guessunderwear.kr/",
+      "offer": "최대 60%(2) · 20% 할인(1) · 5%할인(1) · ~50%(1)",
+      "max": 60,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아스트로브",
+      "url": "https://astrove.co.kr/",
+      "offer": "~60%(2)",
+      "max": 60,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "에이제트에이치",
+      "url": "https://azh.co.kr/",
+      "offer": "35% OFF(13) · 50% OFF(12) · 25% OFF(9) · 30% OFF(8) · 40% OFF(8) · 54% OFF(3)",
+      "max": 60,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "에이카화이트",
+      "url": "https://aecawhite.com/",
+      "offer": "40% OFF(9) · 60% OFF(2) · 20% OFF(1)",
+      "max": 60,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "토런스",
+      "url": "https://tolance.kr/",
+      "offer": "UP TO 59%(1)",
+      "max": 59,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "핍스 모터사이클",
+      "url": "https://phyps-department.co.kr/",
+      "offer": "10% 할인(1) · ~ 59%(1)",
+      "max": 59,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "이옴",
+      "url": "https://eiom.co.kr/",
+      "offer": "5% 할인(1) · UP TO 55%(1)",
+      "max": 55,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "이스케이프프롬",
+      "url": "https://escapefrom.co.kr/",
+      "offer": "04% OFF(1) · 11% OFF(1) · 2% OFF(1) · 54% OFF(1)",
+      "max": 54,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "브리즈피",
+      "url": "https://breezfy.com/",
+      "offer": "50% off(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "슈펜",
+      "url": "https://shoopen.elandmall.co.kr/",
+      "offer": "~50%(2)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "스웨이글로우",
+      "url": "https://swayglow.co.kr/",
+      "offer": "Season off(1) · up to 50%(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "아틀리에 델디오",
+      "url": "https://www.deldio.co.kr/",
+      "offer": "최대 50%(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "월스와일 무브먼트",
+      "url": "https://worthwhilemovement.com/",
+      "offer": "30% Off(1) · 40% Off(1) · 50% Off(1) · SEASON OFF(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "코데즈컴바인 이너웨어",
+      "url": "https://codescombineinnerwear.co.kr/",
+      "offer": "20% 할인(1) · ~50%(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "탄산마그네슘",
+      "url": "https://tansanmagnesium.kr/",
+      "offer": "Up to 50%(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "토앤토",
+      "url": "https://tawntoe.com/",
+      "offer": "~50%(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "피그먼트",
+      "url": "https://pigment.co.kr/",
+      "offer": "50% 오프(1) · ~50%(1)",
+      "max": 50,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "히에타",
+      "url": "https://hieta.co.kr/",
+      "offer": "20% OFF(32) · 10% OFF(6) · 15% OFF(2) · 30% OFF(2) · 10% 할인(1) · UP TO 45%(1)",
+      "max": 45,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아티스트웨어",
+      "url": "https://artistwear.co.kr/",
+      "offer": "40% OFF(8) · 30% OFF(7) · 42% OFF(1)",
+      "max": 42,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "노드유",
+      "url": "https://nodu.co.kr/",
+      "offer": "Up to 40%(1)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "레이지소사이어티",
+      "url": "https://lazysociety.co.kr/",
+      "offer": "최대 40%(1)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "블랙야크",
+      "url": "https://www.byn.kr/content/content.php?cont=blackyak&hta_brand=blackyak",
+      "offer": "UP TO 40%(1)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "송지오",
+      "url": "https://songzio.com/",
+      "offer": "최대 10%(1) · 최대 20%(1) · 최대 40%(1)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "써피",
+      "url": "https://surfea.co.kr/",
+      "offer": "10% 할인(1) · 30%OFF(1) · UP TO 40%(1)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "일리고",
+      "url": "https://illigo.co.kr/",
+      "offer": "10% OFF(2) · UP TO 40%(2)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "포즈간츠",
+      "url": "https://pose-ganch.com/",
+      "offer": "40% OFF(1)",
+      "max": 40,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "토피",
+      "url": "https://toffee.co.kr/",
+      "offer": "36% OFF(7) · 35% OFF(3)",
+      "max": 36,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "로제프란츠",
+      "url": "https://rosefrantz.com/",
+      "offer": "20%할인(122) · 5%할인(14) · 30%할인(13)",
+      "max": 30,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "어나더 오피스",
+      "url": "https://anotheroffice.co.kr/",
+      "offer": "up to 30%(2) · 15% OFF(1) · ~30%(1)",
+      "max": 30,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "테일던",
+      "url": "https://taildern.com/",
+      "offer": "SEASON OFF(4) · UP TO 30%(1) · 시즌오프(1)",
+      "max": 30,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "두잉왓",
+      "url": "https://doingwhat.co.kr/",
+      "offer": "21% 할인(2)",
+      "max": 21,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "네이밍",
+      "url": "https://naming.co.kr/",
+      "offer": "최대 20%(3)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "드라이로즈",
+      "url": "https://dryrose.co.kr/",
+      "offer": "20% 할인(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "레이지비",
+      "url": "https://lazybee.co.kr/",
+      "offer": "10% 할인(82) · 5% 할인(29) · 7% 할인(5) · 최대 20%(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "아워데이즈",
+      "url": "https://ourdayz.co.kr/",
+      "offer": "20% 할인(18)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "에르비노",
+      "url": "https://hervino.co.kr/",
+      "offer": "20% 할인(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "이카룩",
+      "url": "https://ikalook.co.kr/",
+      "offer": "20% 할인(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "인사일런스",
+      "url": "https://insilence.co.kr/",
+      "offer": "SEASON OFF(2) · ~20%(2) · 시즌오프(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "인사일런스 우먼",
+      "url": "https://insilencewomen.com/",
+      "offer": "SEASON OFF(2) · ~20%(2) · 시즌오프(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "쿠키시",
+      "url": "https://kookeesee.com/",
+      "offer": "20% 할인(2)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "타버트",
+      "url": "https://tarvert.kr/",
+      "offer": "최대 20%(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "피렌체 아뜨리에",
+      "url": "https://firenzeatelier.com/",
+      "offer": "최대 20%(1)",
+      "max": 20,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "러브이즈트루",
+      "url": "https://luvistrue.com/",
+      "offer": "10% 할인(23) · 15% 할인(3) · 10% OFF(1)",
+      "max": 15,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "바토즈",
+      "url": "https://vatoz.co.kr/",
+      "offer": "15% 할인(1) · 3% 할인(1)",
+      "max": 15,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "비나제이",
+      "url": "https://vinaj.kr/",
+      "offer": "10% 할인(1) · 15% OFF(1)",
+      "max": 15,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "틸아이다이",
+      "url": "https://tillidie.com/",
+      "offer": "up to 15%(1)",
+      "max": 15,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "프리버07",
+      "url": "https://friver07.com/",
+      "offer": "15% OFF(1)",
+      "max": 15,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "누핍",
+      "url": "https://nupip.co.kr/",
+      "offer": "10% 할인(1)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "레떼드폴린",
+      "url": "https://letedepauline.co.kr/",
+      "offer": "10% 할인(1) · SEASON-OFF(1)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "무아르무스",
+      "url": "https://www.muarmus.co.kr/",
+      "offer": "10% 할인(1)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "뮤즈뮤지엄",
+      "url": "https://musemuseum.co.kr/",
+      "offer": "10% Off(1)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "비키니밴더",
+      "url": "https://vikinivender.co.kr/",
+      "offer": "10% off(43)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "에트오소메",
+      "url": "https://etreausommet.co.kr/",
+      "offer": "최대 7%(27) · 최대 10%(4)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "제뉴즈",
+      "url": "https://znuz.co.kr/",
+      "offer": "UP TO 10%(4)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "찰스앤키스",
+      "url": "https://www.charleskeith.com/kr",
+      "offer": "10% 할인(4) · 시즌 오프(1)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "시즌오프"
+    },
+    {
+      "brand": "플리즈노팔로우",
+      "url": "https://pleasenofollow.kr/",
+      "offer": "10% 할인(8)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "헤더먼트",
+      "url": "https://hetherment.com/",
+      "offer": "10% OFF(3)",
+      "max": 10,
+      "tier": "exact",
+      "condition": "선택 상품"
+    },
+    {
+      "brand": "LMC",
+      "url": "https://lostmanagementcities.com/",
+      "offer": "FINAL SALE(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "꼬모니노즈",
+      "url": "https://comoninoz.co.kr/",
+      "offer": "SEASON OFF(29)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "노이스",
+      "url": "https://noice.co.kr/",
+      "offer": "SEASON OFF(4) · 시즌오프(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "더니트컴퍼니",
+      "url": "https://theknitcompany.com/",
+      "offer": "End Of Season Sale(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "더콜디스트모먼트",
+      "url": "https://thecoldestmoment.com/",
+      "offer": "season-off(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "던스트",
+      "url": "https://dunststudio.com/",
+      "offer": "시즌오프(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "데이",
+      "url": "https://they.kr/",
+      "offer": "10% 할인(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "레스트앤레크레이션",
+      "url": "https://restandrecreation.com/",
+      "offer": "SEASON OFF(11)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "로우클래식",
+      "url": "https://lowclassic.co.kr/",
+      "offer": "Season Off(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "메인부스",
+      "url": "https://mainbooth.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "몰든",
+      "url": "https://malden.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "무쿠앤에보니",
+      "url": "https://mucuandebony.com/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "밀로 우먼",
+      "url": "https://millowomen.com/",
+      "offer": "SEASON OFF(3)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "배드블러드",
+      "url": "https://badblood.co.kr/",
+      "offer": "SEASON OFF(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "브라운야드",
+      "url": "https://brownyard.co.kr/",
+      "offer": "시즌오프(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "비디오자키",
+      "url": "https://videojockey.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "비헤비어",
+      "url": "https://beheavyer.com/",
+      "offer": "시즌오프(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "스포츠챔버",
+      "url": "https://sportchamber.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "아웃도어 프로덕츠",
+      "url": "https://outdoorproducts.co.kr/",
+      "offer": "SEASON OFF(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "앵글런",
+      "url": "https://anglan.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "언더오프",
+      "url": "https://underoff.com/",
+      "offer": "Season Off(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "에브리시",
+      "url": "https://everyasy.kr/",
+      "offer": "Season Off(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "에스피오나지",
+      "url": "https://www.espionage.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "에이에이유",
+      "url": "https://aau.co.kr/",
+      "offer": "SEASON OFF(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "엠엠아이씨",
+      "url": "https://mmic.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "우마뭉",
+      "url": "https://umarmung.kr/",
+      "offer": "SEASON OFF(2)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "유에프씨 스포츠",
+      "url": "https://ufcsport.co.kr/",
+      "offer": "10% 할인(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "유우프",
+      "url": "https://uuuup.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "제너럴아이디어",
+      "url": "https://generalidea.co.kr/",
+      "offer": "시즌오프(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "제로그램",
+      "url": "https://zerogram.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "제이리움",
+      "url": "https://jrium.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "커스텀어클락",
+      "url": "https://costumeoclock.co.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "트립르센스",
+      "url": "https://triplesens.com/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "티엔지티",
+      "url": "https://tngt.com/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "포르테나",
+      "url": "https://porterna.com/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "포에트서울",
+      "url": "https://poeteseoul.com/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "해칭룸",
+      "url": "https://hatchingroom.com/",
+      "offer": "Season Off(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "후브스",
+      "url": "https://hooves.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    },
+    {
+      "brand": "힐다",
+      "url": "https://hillda.kr/",
+      "offer": "SEASON OFF(1)",
+      "max": null,
+      "tier": "page",
+      "condition": "할인율·종료일 미표기"
+    }
+  ],
+  "excluded": [
+    {
+      "label": "현재 화면에 구체 세일 없음",
+      "items": [
+        "1989스탠다드",
+        "1993스튜디오",
+        "그레이노이즈",
+        "글로니",
+        "기호",
+        "노이어",
+        "니프니프",
+        "더바넷",
+        "데미오",
+        "뚜오미오",
+        "러쉬",
+        "레터프롬문",
+        "로우플로우",
+        "룩캐스트",
+        "미나수",
+        "미쏘",
+        "브라운브레스",
+        "브랜든",
+        "샬랑 드 파리",
+        "스위치",
+        "스팁",
+        "시너진",
+        "시눈",
+        "썸웨어버터",
+        "썸플레이스",
+        "엑스컨테이너",
+        "엘무드",
+        "엠오오",
+        "워크온바디오프",
+        "위캔더스",
+        "유니온블루",
+        "이티씨이",
+        "카네이테이",
+        "커버낫",
+        "컴포트랩",
+        "쿠어",
+        "크라시앙",
+        "키미미",
+        "펀치드렁크파티즈",
+        "페인오어플레져",
+        "프루베",
+        "프루티드",
+        "필루미네이트",
+        "필프",
+        "하 아카이브",
+        "하이타이드 프랭키",
+        "호와스",
+        "홀리데이비지터"
+      ]
+    },
+    {
+      "label": "도메인 불일치·글로벌·비패션",
+      "items": [
+        "108파운드 → Join us and Get 10% off — 멤버십 혜택",
+        "고세 → 회원 20% 할인 (회원가입 전용) — 멤버십 혜택",
+        "덴메이드 → 카카오톡 플러스친구 추가 시 15% 할인 쿠폰 — 멤버십 혜택",
+        "도프제이슨 → BLACK FRIDAY 카테고리 메뉴 + 신규 첫구매 10% 쿠폰 — 메뉴/멤버십 노이즈",
+        "드헤베 → KAKAO PLUS 10% OFF — 멤버십 혜택",
+        "맥우드건 → 신규가입 10% 할인 쿠폰 — 멤버십 혜택",
+        "무드인사이드 → BLACK FRIDAY 카테고리 메뉴 (할인율 미표기) — 메뉴 노이즈",
+        "벤힛 → 공식몰 오픈 이벤트 5% — 신상품 멤버십 혜택",
+        "블레이어 → 음반/CD 판매 (blayer.co.kr)",
+        "삐아 → 화장품 브랜드 (bbia.co.kr)",
+        "아테즈 → 공식몰 오픈 이벤트 5% — 신상품 멤버십 혜택",
+        "엔디오디 → 신규 회원 전용 10% 할인 쿠폰 — 멤버십 혜택",
+        "엘라고 → 폰 케이스/액세서리 브랜드 (갤럭시·버즈 케이스, 패션 아님)",
+        "엠엠엘지 → 신규 회원 10% 할인쿠폰 — 멤버십 혜택",
+        "위오이 → 신규 가입 10% 할인 — 멤버십 혜택",
+        "제로 → 글로벌 회계 소프트웨어 (xero.com, 패션 아님)",
+        "젝시믹스 → 스포츠/요가웨어 (xexymix.com)",
+        "카고브로스 → 카카오플친 10% 할인쿠폰 — 멤버십 혜택",
+        "키치앤키스 → 신규 회원 30% off coupon — 멤버십 혜택",
+        "트리코닉스 → 탈모/헤어케어 브랜드 (샴푸·두피앰플, 패션 아님)",
+        "파인드카푸어 → JULY BEST 20 GET 10% OFF + MEMBERSHIP 10% — 멤버십 혜택",
+        "포지타노 → 회원가입 시 10% 할인쿠폰 — 멤버십 혜택",
+        "프로드셔츠 → 신규 회원가입 10% COUPON — 멤버십 혜택",
+        "헤레틱 → JOIN NOW & GET 10% OFF COUPON — 멤버십 혜택",
+        "헤븐리젤리 → 신규회원 10% 쿠폰 + 신발 5% — 멤버십 혜택",
+        "헤지스 → 시즌오프 네비게이션 메뉴 + 멤버십 최대 15% — 메뉴/멤버십 노이즈",
+        "헬리녹스 → 헬리녹스 미국 글로벌 사이트 (helinox.com) — 첫 구매 10% 뉴스레터 가입혜택"
+      ]
+    },
+    {
+      "label": "멤버십/쿠폰 노이즈",
+      "items": []
+    },
+    {
+      "label": "과거 캠페인·렌더 실패",
+      "items": [
+        "999휴머니티 (stale-year:2000)",
+        "다니엘 웰링턴 (stale-year:2011)",
+        "브렌슨 (stale-year:2019)",
+        "빈폴 액세서리 (stale-year:2025)"
+      ]
+    }
+  ]
+}
