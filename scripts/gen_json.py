@@ -46,27 +46,28 @@ for s in sorted(page, key=lambda x: x["brand"]):
 # Count pages fetched
 pages_count = len(list((base / "pages").glob("p*.json")))
 brand_candidates = len((base / "brands.tsv").read_text(encoding="utf-8").splitlines())
-# Rendered URLs = rows actually rendered this run (from summary.tsv, minus header)
-summary_path = base / "rendered" / "summary.tsv"
-rendered_urls = max(0, len(summary_path.read_text(encoding="utf-8").splitlines()) - 1) if summary_path.exists() else 0
+# Rendered URLs = rows actually rendered this run (main + missing summaries)
+def _summary_rows(path):
+    return max(0, len(path.read_text(encoding="utf-8").splitlines()) - 1) if path.exists() else 0
+rendered_urls = _summary_rows(base / "rendered" / "summary.tsv") + _summary_rows(base / "rendered-missing" / "summary.tsv")
 
 # Excluded groups
 excluded = [
     {
         "label": "현재 화면에 구체 세일 없음",
-        "items": sorted(analysis["rejected_novisual"]),
+        "items": sorted(analysis.get("excluded_noconcrete", [])),
     },
     {
         "label": "도메인 불일치·글로벌·비패션",
-        "items": sorted(analysis["rejected_global"]),
+        "items": sorted(analysis.get("excluded_identity", {})),
     },
     {
         "label": "멤버십/쿠폰 노이즈",
-        "items": sorted(analysis.get("rejected_noise", [])),
+        "items": sorted(analysis.get("excluded_membership", {})),
     },
     {
         "label": "과거 캠페인·렌더 실패",
-        "items": sorted(analysis.get("rejected_stale", [])),
+        "items": sorted(analysis.get("excluded_stale", [])),
     },
 ]
 
