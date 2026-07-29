@@ -514,6 +514,159 @@
     }
     footer a { text-underline-offset: 4px; }
 
+    /* --- Changelog --- */
+    .changelog {
+      background: var(--paper);
+      padding: 0 0 110px;
+    }
+    .changelog-head {
+      padding: 90px var(--page-x) 38px;
+      border-bottom: 1px solid var(--line);
+    }
+    .trend-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: clamp(3px, 1.2vw, 18px);
+      padding: 50px var(--page-x) 30px;
+      border-bottom: 1px solid var(--line);
+      min-height: 220px;
+    }
+    .trend-bar {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: default;
+    }
+    .trend-bar-fill {
+      width: 100%;
+      max-width: 48px;
+      background: var(--ink);
+      border-radius: 2px 2px 0 0;
+      transition: background 180ms ease;
+      position: relative;
+    }
+    .trend-bar:hover .trend-bar-fill { background: var(--signal); }
+    .trend-bar-value {
+      font-family: var(--display);
+      font-size: clamp(10px, 1.3vw, 16px);
+      line-height: 1;
+      color: var(--ink);
+    }
+    .trend-bar-date {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+      writing-mode: horizontal-tb;
+    }
+    .trend-bar.latest .trend-bar-fill { background: var(--signal); }
+    .trend-bar.latest .trend-bar-value { color: var(--signal); }
+    .changelog-list {
+      padding: 0 var(--page-x);
+    }
+    .changelog-row {
+      display: grid;
+      grid-template-columns: minmax(80px, 0.15fr) minmax(60px, 0.1fr) minmax(0, 0.8fr);
+      gap: 30px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    .changelog-row:first-child { border-top: 0; }
+    .cl-date {
+      font-family: var(--display);
+      font-size: clamp(18px, 2vw, 28px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .cl-delta {
+      font-family: var(--display);
+      font-size: clamp(20px, 2.5vw, 34px);
+      line-height: 1;
+    }
+    .cl-delta.positive { color: var(--signal); }
+    .cl-delta.negative { color: #3b6ef0; }
+    .cl-delta.zero { color: var(--ink-soft); }
+    .cl-detail { min-width: 0; }
+    .cl-summary {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      margin: 0 0 10px;
+      letter-spacing: 0.02em;
+    }
+    .cl-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 8px;
+    }
+    .cl-group:last-child { margin-bottom: 0; }
+    .cl-group-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      align-self: center;
+      margin-right: 4px;
+    }
+    .cl-group-label.added { color: var(--signal); }
+    .cl-group-label.removed { color: #3b6ef0; }
+    .cl-tag {
+      display: inline-block;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 3px;
+      background: rgba(255,77,33,0.08);
+      color: var(--ink);
+    }
+    .cl-tag.removed {
+      background: rgba(59,110,240,0.08);
+      color: var(--ink-soft);
+      text-decoration: line-through;
+      text-decoration-color: rgba(59,110,240,0.4);
+    }
+    .cl-tag.no-change {
+      background: transparent;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      padding: 0 var(--page-x);
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,.2);
+    }
+    .tab-button {
+      position: relative;
+      padding: 16px 26px 16px 0;
+      color: #8a9096;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      transition: color 200ms ease;
+    }
+    .tab-button + .tab-button { margin-left: 28px; }
+    .tab-button:hover { color: #c4c9cd; }
+    .tab-button[aria-selected="true"] { color: var(--white); }
+    .tab-button[aria-selected="true"]::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 26px;
+      bottom: 0;
+      height: 3px;
+      background: var(--signal);
+    }
+    .tab-panel[hidden] { display: none; }
+
     .status-message {
       padding: 70px var(--page-x);
       color: var(--signal);
@@ -590,6 +743,9 @@
       .audit-copy { grid-template-columns: 1fr; }
       .excluded-row { grid-template-columns: 1fr; gap: 5px; }
       footer { flex-direction: column; }
+      .changelog-row { grid-template-columns: 1fr; gap: 8px; }
+      .changelog-head { padding-top: 62px; padding-bottom: 28px; }
+      .trend-chart { padding: 36px var(--page-x) 24px; min-height: 160px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -628,6 +784,12 @@
       </div>
     </section>
 
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-button" role="tab" aria-selected="true" aria-controls="panel-sales" id="tab-sales">세일 목록</button>
+      <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-changelog" id="tab-changelog">체인지로그</button>
+    </nav>
+
+    <section class="tab-panel" id="panel-sales" role="tabpanel" aria-labelledby="tab-sales">
     <section class="urgent-zone" aria-labelledby="urgent-title">
       <h2 class="urgent-label" id="urgent-title">Ends<br>today</h2>
       <div class="urgent-list" id="urgent-list"></div>
@@ -685,6 +847,18 @@
         </div>
       </div>
     </section>
+    </section><!-- /panel-sales -->
+
+    <section class="tab-panel" id="panel-changelog" role="tabpanel" aria-labelledby="tab-changelog" hidden>
+      <div class="changelog">
+        <div class="changelog-head">
+          <p class="section-kicker">Day-over-day changes</p>
+          <h2>Changelog</h2>
+        </div>
+        <div class="trend-chart" id="trend-chart"></div>
+        <div class="changelog-list" id="changelog-list"></div>
+      </div>
+    </section><!-- /panel-changelog -->
   </main>
 
   <footer>
@@ -865,6 +1039,98 @@
       const max = document.documentElement.scrollHeight - innerHeight;
       document.documentElement.style.setProperty("--scroll", `${max > 0 ? (scrollY / max) * 100 : 0}%`);
     }, { passive: true });
+
+    /* --- Tab navigation --- */
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+    let changelogLoaded = false;
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("aria-controls");
+        tabButtons.forEach((b) => b.setAttribute("aria-selected", String(b === btn)));
+        tabPanels.forEach((p) => { p.hidden = p.id !== target; });
+        if (target === "panel-changelog" && !changelogLoaded) {
+          loadChangelog();
+        }
+      });
+    });
+
+    /* --- Changelog --- */
+    function renderTrend(entries) {
+      const chart = document.querySelector("#trend-chart");
+      const sorted = [...entries].reverse(); // oldest first for chart
+      const maxVal = Math.max(...sorted.map((e) => e.total), 1);
+      sorted.forEach((e) => {
+        const bar = element("div", "trend-bar");
+        if (e === entries[0]) bar.classList.add("latest"); // latest day
+        const heightPct = (e.total / maxVal) * 100;
+        const fill = element("div", "trend-bar-fill");
+        fill.style.height = `${Math.max(heightPct, 4)}%`;
+        fill.title = `${e.date}: ${e.total}개`;
+        bar.append(fill);
+        bar.append(element("div", "trend-bar-value", String(e.total)));
+        const md = e.date.slice(5).replace("-", "·");
+        bar.append(element("div", "trend-bar-date", md));
+        chart.append(bar);
+      });
+    }
+
+    function renderChangelogList(entries) {
+      const root = document.querySelector("#changelog-list");
+      entries.forEach((e) => {
+        const row = element("div", "changelog-row");
+
+        // Date
+        row.append(element("div", "cl-date", e.date.slice(5).replace("-", "·")));
+
+        // Delta
+        const deltaEl = element("div", "cl-delta");
+        if (e.delta > 0) { deltaEl.classList.add("positive"); deltaEl.textContent = `+${e.delta}`; }
+        else if (e.delta < 0) { deltaEl.classList.add("negative"); deltaEl.textContent = `${e.delta}`; }
+        else { deltaEl.classList.add("zero"); deltaEl.textContent = `±0`; }
+        row.append(deltaEl);
+
+        // Detail
+        const detail = element("div", "cl-detail");
+        detail.append(element("p", "cl-summary",
+          `${e.total}개 (할인율 ${e.exact} + 세일페이지 ${e.page})${e.prevTotal !== null ? ` · 전일 ${e.prevTotal}개` : ""}`
+        ));
+
+        if (e.added.length > 0) {
+          const grp = element("div", "cl-group");
+          grp.append(element("span", "cl-group-label added", `신규 ${e.added.length}`));
+          e.added.forEach((b) => grp.append(element("span", "cl-tag", b)));
+          detail.append(grp);
+        }
+        if (e.removed.length > 0) {
+          const grp = element("div", "cl-group");
+          grp.append(element("span", "cl-group-label removed", `이탈 ${e.removed.length}`));
+          e.removed.forEach((b) => grp.append(element("span", "cl-tag removed", b)));
+          detail.append(grp);
+        }
+        if (e.added.length === 0 && e.removed.length === 0 && e.prevTotal !== null) {
+          detail.append(element("span", "cl-tag no-change", "변동 없음"));
+        }
+        row.append(detail);
+        root.append(row);
+      });
+    }
+
+    async function loadChangelog() {
+      try {
+        const res = await fetch("./changelog.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        renderTrend(data.entries);
+        renderChangelogList(data.entries);
+        changelogLoaded = true;
+      } catch (err) {
+        document.querySelector("#changelog-list").replaceChildren(
+          element("p", "status-message", `체인지로그를 불러오지 못했습니다: ${err.message}`)
+        );
+      }
+    }
 
     fetch("./sales-2026-07-29.json")
       .then((response) => {

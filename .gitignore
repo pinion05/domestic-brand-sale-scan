@@ -3,6 +3,7 @@ pages/
 !scan*.json
 !docs/sales-*.json
 !data/brand-urls.json
+!docs/changelog.json
 brands.tsv
 scan.tsv
 fallback-candidates.tsv
