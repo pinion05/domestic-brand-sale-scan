@@ -62,6 +62,7 @@ render-input-registry-extra.tsv
 render-input-missing.tsv
 render-input-all.tsv
 render-input-new.tsv
+render-input-known.tsv
 combined-summary.tsv
 combined-summary-body.tsv
 new-concrete-extra.tsv
