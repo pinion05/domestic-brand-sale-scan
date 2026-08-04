@@ -51,23 +51,23 @@ def _summary_rows(path):
     return max(0, len(path.read_text(encoding="utf-8").splitlines()) - 1) if path.exists() else 0
 rendered_urls = _summary_rows(base / "rendered" / "summary.tsv") + _summary_rows(base / "rendered-missing" / "summary.tsv")
 
-# Excluded groups
+# Excluded groups (analysis.json uses rejected_* keys from analyze_results.py)
 excluded = [
     {
         "label": "현재 화면에 구체 세일 없음",
-        "items": sorted(analysis.get("excluded_noconcrete", [])),
+        "items": sorted(analysis.get("rejected_novisual", [])),
     },
     {
         "label": "도메인 불일치·글로벌·비패션",
-        "items": sorted(analysis.get("excluded_identity", {})),
+        "items": sorted(analysis.get("rejected_global", [])),
     },
     {
         "label": "멤버십/쿠폰 노이즈",
-        "items": sorted(analysis.get("excluded_membership", {})),
+        "items": sorted(analysis.get("rejected_noise", [])),
     },
     {
         "label": "과거 캠페인·렌더 실패",
-        "items": sorted(analysis.get("excluded_stale", [])),
+        "items": sorted(analysis.get("rejected_stale", [])),
     },
 ]
 

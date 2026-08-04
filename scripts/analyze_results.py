@@ -92,6 +92,11 @@ REJECT = {
     "maninstore": "BLACK FRIDAY 카테고리 메뉴 (할인율 미표기) — 메뉴 노이즈",
     "elago": "폰 케이스/액세서리 브랜드 (갤럭시·버즈 케이스, 패션 아님)",
     "heavenlyjelly_dup": "duplicate",
+    "garmin": "스마트워치/GPS 기기 브랜드 (garmin.com, 패션 아님)",
+    "fitflop": "SSFShop 플랫폼 매장 (공식몰 아님, ssfshop.com)",
+    "cclimebeauty": "글로벌 뷰티 브랜드 (USD 가격, cclimebeauty.com)",
+    "aldoshoes": "캐나다 글로벌 신발 브랜드 (USD 가격, aldoshoes.com)",
+    "leire": "SS BLACK FRIDAY 카테고리 메뉴 (할인율 미표기) — 메뉴 노이즈",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop
