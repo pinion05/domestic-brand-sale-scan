@@ -78,3 +78,12 @@ tc.txt
 rendered-keys.txt
 yesterday-brands.txt
 yesterday-codes-raw.txt
+summary-visible.tsv
+visible-clean.tsv
+render-retry.tsv
+render-retry.log
+rendered-retry/
+parse.err
+analyze.err
+render-input-all-registry.tsv
+render-input-uniq.tsv
