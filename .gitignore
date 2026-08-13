@@ -88,3 +88,13 @@ analyze.err
 render-input-all-registry.tsv
 render-input-uniq.tsv
 glm-5.3-deep-investigation.md
+analysis_final.json
+batch_a?
+summary_?.tsv
+new-concrete.err
+rendered-all-summary.tsv
+all-visible.tsv
+diff.json
+yesterday-brands.json
+visible-clean.tsv
+scripts/gen_report.py
