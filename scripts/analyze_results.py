@@ -97,6 +97,19 @@ REJECT = {
     "cclimebeauty": "글로벌 뷰티 브랜드 (USD 가격, cclimebeauty.com)",
     "aldoshoes": "캐나다 글로벌 신발 브랜드 (USD 가격, aldoshoes.com)",
     "leire": "SS BLACK FRIDAY 카테고리 메뉴 (할인율 미표기) — 메뉴 노이즈",
+    "banilaco": "화장품/뷰티 브랜드 (banila.com)",
+    "mediheal": "마스크팩/스킨케어 브랜드 (USD 가격, mediheal.com)",
+    "bearpaw": "미국 신발 브랜드 (USD 가격, bearpaw.com)",
+    "olaplex": "헤어케어/뷰티 브랜드 (글로벌, olaplex.com)",
+    "marieclaire": "패션 잡지 사이트 (marieclaire.com, 의류 브랜드 아님)",
+    "innisfree": "화장품/뷰티 브랜드 (innisfree.co.kr)",
+    "skinnlab": "스킨케어 브랜드 (skinnlab.com)",
+    "podl": "스킨케어 브랜드 (클렌징/토너/세럼, podl.co.kr)",
+    "kkonglash": "속눈썹/뷰티 브랜드 (EUR 가격, kkonglash.com)",
+    "betterthansurf": "신규 가입 15% 할인쿠폰 — 멤버십 노이즈",
+    "grafen": "신규가입 5만원 혜택 — 멤버십 노이즈",
+    "gramicci": "미국 글로벌 사이츠 (USD 가격, gramicci.com)",
+    "lannue": "스킨케어/코스메틱 브랜드 (랑느 코스메틱, lannue.co.kr)",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop
