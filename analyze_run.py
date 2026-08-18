@@ -63,6 +63,9 @@ IDENTITY_REJECT = {
     "kuoca": "쿠오카 — 향수/프래그런스 브랜드 (패션 의류 아님)",
     "triconix": "트리코닉스 — 두피케어/탈모 케어 브랜드 (패션 아님)",
     "timex": "타이맥스 — 미국 시계 브랜드 글로벌, USD (한국 패션 아님)",
+    "parity": "패리티 — 캐리어/수트케이스·트래블 용품 (패션 의류 아님)",
+    "romand": "롬앤 — 립틴트/글로스 색조 뷰티 브랜드 (패션 의류 아님)",
+    "lloyd": "로이드 — lloyd.com 독일 신발/패션 글로벌, EUR/영어 페이지 (한국 패션 아님)",
 }
 
 # Membership/coupon-only noise (no real season campaign)
@@ -127,6 +130,13 @@ COUPON_REJECT = {
     "pentaon": "펜타온 — 신규회원 10% 쿠폰 + 상품별 할인가 표기만 (캠페인 문구 없음)",
     "boxraw": "복스로 — 포인트 적립 '최대 100%까지 사용' 안내 (포인트 노이즈)",
     "meenderi": "민더리 — 카카오톡 플러스친구 10% OFF 쿠폰 (회원 노이즈)",
+    "chancesnoi": "챈세스노이 — always-on 상시 이벤트 30% + 신규가입 쿠폰 (상시 노이즈)",
+    "1507": "일오공칠 — 신규 회원가입시 30% 할인 쿠폰 증정 (회원 노이즈)",
+    "ndod": "엔디오디 — 신규 회원 10% 쿠폰 + 적립금 (회원 노이즈)",
+    "thematee": "더마티 — 카카오채널 친구추가 10% 할인쿠폰 (채널 노이즈)",
+    "sealot": "실롯 — 10% Off Coupon만 노출 (쿠폰 노이즈)",
+    "not4nerd": "낫포너드 — 회원 등급별 최대 10% 추가 할인 (멤버십 등급 노이즈)",
+    "tarvert": "타버트 — 신규 가입시 최대 20% 할인 쿠폰 (회원 노이즈)",
 }
 # remove placeholders and entries whose artifact evidence showed a real campaign
 for _ph in [k for k, v in COUPON_REJECT.items() if v == "placeholder" or "유지 검토 결과 실제 캠페인" in v]:
