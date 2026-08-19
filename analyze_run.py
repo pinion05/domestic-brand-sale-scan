@@ -66,6 +66,12 @@ IDENTITY_REJECT = {
     "parity": "패리티 — 캐리어/수트케이스·트래블 용품 (패션 의류 아님)",
     "romand": "롬앤 — 립틴트/글로스 색조 뷰티 브랜드 (패션 의류 아님)",
     "lloyd": "로이드 — lloyd.com 독일 신발/패션 글로벌, EUR/영어 페이지 (한국 패션 아님)",
+    "laka": "라카 — (주)라카코스메틱스 립밤/립세럼 뷰티 브랜드 (패션 의류 아님)",
+    "shokz": "샥즈 — 골전도 헤드폰/오디오 기기 글로벌 브랜드 (패션 아님)",
+    "allsaints": "올세인츠 — 영국 글로벌 패션 브랜드 한국 스토어 (국내 브랜드 아님)",
+    "shioeip": "시오 이아이피 — 신규 회원 첫 구매 10% 할인 쿠폰 (회원 노이즈)",
+    "dieuamour": "디유아모르 — 모이사나이트 목걸이 주얼리 (패션 의류 아님)",
+    "scentlier": "센틀리에 — 퍼퓸룸앤패브릭스프레이 향수/홈프래그런스 브랜드 (패션 의류 아님)",
 }
 
 # Membership/coupon-only noise (no real season campaign)
@@ -137,6 +143,10 @@ COUPON_REJECT = {
     "sealot": "실롯 — 10% Off Coupon만 노출 (쿠폰 노이즈)",
     "not4nerd": "낫포너드 — 회원 등급별 최대 10% 추가 할인 (멤버십 등급 노이즈)",
     "tarvert": "타버트 — 신규 가입시 최대 20% 할인 쿠폰 (회원 노이즈)",
+    "limelightapparel": "라임라잇 어패럴 — 신규 회원 가입 시 10% 할인 쿠폰 (회원 노이즈)",
+    "noice": "노이스 — 카카오톡 채널 추가 시 10% OFF 혜택 (채널 노이즈)",
+    "kitschnkiss": "키치앤키스 — 신규 회원 30% off coupon (회원 노이즈)",
+    "cellfusionc": "셀퓨전씨 — 뉴스레터 구독 GET 10% OFF (회원 노이즈)",
 }
 # remove placeholders and entries whose artifact evidence showed a real campaign
 for _ph in [k for k, v in COUPON_REJECT.items() if v == "placeholder" or "유지 검토 결과 실제 캠페인" in v]:

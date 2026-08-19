@@ -98,3 +98,9 @@ diff.json
 yesterday-brands.json
 visible-clean.tsv
 scripts/gen_report.py
+fetch.err
+render-extra-input.tsv
+render-input-registry-all.tsv
+render-main.log
+rendered-retry2/
+rendered-retry3/
