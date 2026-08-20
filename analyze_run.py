@@ -72,6 +72,11 @@ IDENTITY_REJECT = {
     "shioeip": "시오 이아이피 — 신규 회원 첫 구매 10% 할인 쿠폰 (회원 노이즈)",
     "dieuamour": "디유아모르 — 모이사나이트 목걸이 주얼리 (패션 의류 아님)",
     "scentlier": "센틀리에 — 퍼퓸룸앤패브릭스프레이 향수/홈프래그런스 브랜드 (패션 의류 아님)",
+    "lussocloud": "루쏘 클라우드 — 미국 컴포트 슬리퍼 브랜드, USD 가격 (한국 패션 아님)",
+    "sergiotacchini": "세르지오 타키니 — 이탈리아 테니스웨어 글로벌, USD 가격 (한국 브랜드 아님)",
+    "rumtton": "럼튼 — 시계 전문 브랜드 (패션 의류 아님)",
+    "prooted": "프루티드 — 샴푸/트리트먼트 헤어케어 브랜드 (패션 의류 아님)",
+    "beanpoleacc": "빈폴 액세서리 — SSFShop 플랫폼 매장 (공식몰 아님) — 재제외",
 }
 
 # Membership/coupon-only noise (no real season campaign)
@@ -146,6 +151,7 @@ COUPON_REJECT = {
     "limelightapparel": "라임라잇 어패럴 — 신규 회원 가입 시 10% 할인 쿠폰 (회원 노이즈)",
     "noice": "노이스 — 카카오톡 채널 추가 시 10% OFF 혜택 (채널 노이즈)",
     "kitschnkiss": "키치앤키스 — 신규 회원 30% off coupon (회원 노이즈)",
+    "wwwkitschnkiss": "키치앤키스 — 신규 회원 30% off coupon (회원 노이즈)",
     "cellfusionc": "셀퓨전씨 — 뉴스레터 구독 GET 10% OFF (회원 노이즈)",
 }
 # remove placeholders and entries whose artifact evidence showed a real campaign
