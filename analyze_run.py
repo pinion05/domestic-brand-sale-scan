@@ -77,6 +77,23 @@ IDENTITY_REJECT = {
     "rumtton": "럼튼 — 시계 전문 브랜드 (패션 의류 아님)",
     "prooted": "프루티드 — 샴푸/트리트먼트 헤어케어 브랜드 (패션 의류 아님)",
     "beanpoleacc": "빈폴 액세서리 — SSFShop 플랫폼 매장 (공식몰 아님) — 재제외",
+    "rawrow": "로우로우 — 캐리어/트렁크 브랜드 (패션 의류 아님) — 재제외",
+    "roundlab": "라운드랩 — 스킨케어/선케어 뷰티 브랜드 (패션 아님)",
+    "tirtir": "티르티르 — 스킨케어 뷰티 브랜드 (패션 아님)",
+    "bbia": "삐아 — 화장품/색조 뷰티 브랜드 (패션 아님) — 재제외",
+    "sungbooneditor": "성분에디터 — 스킨케어 뷰티 브랜드 (패션 아님)",
+    "dinto": "딘토 — 화장품/뷰티 브랜드 (패션 아님)",
+    "lush": "러쉬 — 글로벌 뷰티/코스메틱 브랜드 (패션 아님)",
+    "bose": "보스 — 음향기기/헤드폰 브랜드 (패션 아님)",
+    "byc": "비와이씨 — 속옷/이너웨어 제조사 몰, 시즌 캠페인 아님",
+    "uiq": "유이크 — 바이옴 레미디 선크림/쿨링패드 뷰티 (패션 아님)",
+    "hyfve": "하이파이브 — LA 도매 여성복 쇼룸 (로스앤젤레스, 한국 공식몰 아님)",
+    "cloop": "클룹 — 탄산음료/음료 브랜드 (패션 아님) — 재제외",
+    "ilio": "에이던엠 — ilio.com 음악 소프트웨어/플러그인 판매 (패션 아님)",
+    "charde": "샤르드 — 마스크팩/세럼 뷰티 브랜드 (패션 아님) — 재제외",
+    "olivet": "올리베 — 테이블웨어/폰케이스 리빙 잡화 (패션 의류 아님)",
+    "belier2": "벨리에 — belier.com 크로셋 의류 글로벌, EUR 가격 (한국 패션 아님)",
+    "fully": "풀리 — fully.com = Herman Miller 가구 (Fall Sale 25% off, 패션 아님) — 재제외",
 }
 
 # Membership/coupon-only noise (no real season campaign)
@@ -152,6 +169,7 @@ COUPON_REJECT = {
     "noice": "노이스 — 카카오톡 채널 추가 시 10% OFF 혜택 (채널 노이즈)",
     "kitschnkiss": "키치앤키스 — 신규 회원 30% off coupon (회원 노이즈)",
     "wwwkitschnkiss": "키치앤키스 — 신규 회원 30% off coupon (회원 노이즈)",
+    "bemymood": "비마이무드 — 신규 회원 가입 시 10% 할인 쿠폰 (회원 노이즈)",
     "cellfusionc": "셀퓨전씨 — 뉴스레터 구독 GET 10% OFF (회원 노이즈)",
 }
 # remove placeholders and entries whose artifact evidence showed a real campaign
@@ -168,6 +186,14 @@ for _ph in [k for k, v in COUPON_REJECT.items() if v == "placeholder" or "유지
 #   codescombineinnerwear: SUMMER PICKS ~51% dated 08.10-08.24 real campaign -> keep
 for _keep in ["hieta", "prospecs", "illigo", "alavague"]:
     COUPON_REJECT.pop(_keep, None)
+
+# 2026-08-22 new-brand render evidence:
+#   nastyfancyclub: SEASON-OFF SALE UP TO 65% (2026 S/S) — real campaign -> keep
+#   skullpig: 쿨링세일 최대~90% — real campaign -> keep
+#   romantinuer: BEST ITEMS UP TO 20% OFF 카테고리 한정 할인 — real campaign -> keep
+#   vacantarchive: 시즌오프 메뉴 활성. 노출 %는 08.24 신상 예약가(10%)와 카카오친구
+#     10% 쿠폰뿐 → % 신호는 노이즈, 시즌오프 페이지만 인정 (page/null).
+VACANT_PAGE_ONLY = {"vacantarchive"}
 
 def parse_summary(path):
     rows = []
@@ -208,6 +234,8 @@ def main():
             ex_coupon.append(COUPON_REJECT[code])
             continue
         max_pct = extract_max_pct(r["signals"])
+        if code in VACANT_PAGE_ONLY:
+            max_pct = None
         season = bool(re.search(r"(시즌\s*오프|season[\s_-]*off)", r["signals"], re.IGNORECASE)) or \
             bool(re.search(r"end[\s_-]*of[\s_-]*season[\s_-]*sale", r["signals"], re.IGNORECASE))
         bf = bool(re.search(r"(블랙\s*프라이디|black[\s_-]*friday)", r["signals"], re.IGNORECASE))
