@@ -187,6 +187,22 @@ for _ph in [k for k, v in COUPON_REJECT.items() if v == "placeholder" or "유지
 for _keep in ["hieta", "prospecs", "illigo", "alavague"]:
     COUPON_REJECT.pop(_keep, None)
 
+# 2026-08-23 verdicts (verified in today's rendered artifacts):
+#   cornell/캔버스: cornell.com = Cornell Communications 미국 널스콜/비상벨 장비 (패션 아님) -> identity reject
+#   anytimeloreak/애니타임로릭: ~30~85% 는 할인 카테고리 메뉴명. 카테고리/상품 페이지 모두 정가
+#     표기 — 실제 할인가 없음 -> menu-noise reject
+#   avvinapelle/아비나펠르: Refurb Sale (60% off) 카테고리 12개 전품목 SOLD OUT — 구매 가능한
+#     할인 제품 없음 -> reject
+#   ouat/오우앗: 2/25-3/16 기간의 '회원가입시 30% 쿠폰' 팝업 — 과거+회원 노이즈 -> reject
+#   tolance/토런스: SUMMER FINAL WEEK UP TO 64% + 제품 할인가 — 실제 캠페인 -> keep
+#   511vision/511비전: HOT SUMMER SEASON OFF SALE ~8/23 마감 — 실제 시즌오프 -> keep
+NAME_REJECT = {
+    "캔버스": "캔버스 — cornell.com = Cornell Communications 미국 널스콜/비상벨 장비 (패션 아님)",
+    "애니타임로릭": "애니타임로릭 — ~30~85% 카테고리 메뉴명, 제품 정가 표기 (할인가 없음) — 메뉴 노이즈",
+    "아비나펠르": "아비나펠르 — Refurb Sale(60% off) 전품목 SOLD OUT (구매 가능 할인 제품 없음)",
+    "오우앗": "오우앗 — 2/25~3/16 회원가입 30% 쿠폰 팝업 (과거+회원 노이즈)",
+}
+
 # 2026-08-22 new-brand render evidence:
 #   nastyfancyclub: SEASON-OFF SALE UP TO 65% (2026 S/S) — real campaign -> keep
 #   skullpig: 쿨링세일 최대~90% — real campaign -> keep
@@ -215,6 +231,11 @@ def extract_max_pct(signals):
 
 def main():
     rows = parse_summary("rendered/summary.tsv")
+    # brand-name-keyed maps (values are "브랜드명 — 사유") work regardless of code scheme,
+    # so registry renders keyed by hostname still get yesterday's verified rejections.
+    id_by_name = {v.split(" — ")[0]: v for v in IDENTITY_REJECT.values()}
+    cp_by_name = {v.split(" — ")[0]: v for v in COUPON_REJECT.values()}
+    rejected_name_set = set()  # names rejected below; recovery must not resurrect them
     final, ex_identity, ex_coupon, ex_stale, ex_novisual, ex_failed = [], [], [], [], [], []
     for r in rows:
         code, status = r["code"], r["status"]
@@ -229,9 +250,24 @@ def main():
             continue
         if code in IDENTITY_REJECT:
             ex_identity.append(IDENTITY_REJECT[code])
+            rejected_name_set.add(r["brand"])
             continue
         if code in COUPON_REJECT:
             ex_coupon.append(COUPON_REJECT[code])
+            rejected_name_set.add(r["brand"])
+            continue
+        if r["brand"] in NAME_REJECT:
+            reason = NAME_REJECT[r["brand"]]
+            (ex_identity if "패션 아님" in reason else ex_coupon).append(reason)
+            rejected_name_set.add(r["brand"])
+            continue
+        if r["brand"] in id_by_name:
+            ex_identity.append(id_by_name[r["brand"]])
+            rejected_name_set.add(r["brand"])
+            continue
+        if r["brand"] in cp_by_name:
+            ex_coupon.append(cp_by_name[r["brand"]])
+            rejected_name_set.add(r["brand"])
             continue
         max_pct = extract_max_pct(r["signals"])
         if code in VACANT_PAGE_ONLY:
@@ -266,7 +302,8 @@ def main():
     kept = {x["brand"] for x in exact} | {x["brand"] for x in page}
     code_brand = {r["code"]: r["brand"] for r in rows}
     rejected_brands = {code_brand[c] for c in IDENTITY_REJECT if c in code_brand} | \
-                      {code_brand[c] for c in COUPON_REJECT if c in code_brand}
+                      {code_brand[c] for c in COUPON_REJECT if c in code_brand} | \
+                      rejected_name_set
     by_final_host = {}
     from urllib.parse import urlparse
     for r in rows:

@@ -49,7 +49,7 @@ brand_candidates = len((base / "brands.tsv").read_text(encoding="utf-8").splitli
 # Rendered URLs = rows actually rendered this run (main + missing summaries)
 def _summary_rows(path):
     return max(0, len(path.read_text(encoding="utf-8").splitlines()) - 1) if path.exists() else 0
-rendered_urls = _summary_rows(base / "rendered" / "summary.tsv") + _summary_rows(base / "rendered-missing" / "summary.tsv")
+rendered_urls = _summary_rows(base / "rendered" / "summary.tsv") + _summary_rows(base / "rendered-missing" / "summary.tsv") + _summary_rows(base / "rendered-rest" / "summary.tsv")
 
 # Excluded groups (analysis.json uses excluded_* keys from analyze_today.py)
 def _as_items(value):
