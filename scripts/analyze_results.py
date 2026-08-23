@@ -29,7 +29,7 @@ REJECT = {
     "bbia": "화장품 브랜드 (bbia.co.kr)",
     "boxraw": "복싱 용품 (kr.boxraw.com)",
     "rawrow": "캐리어/트렁크 브랜드 (rawrow.com)",
-    "xexymix": "스포츠/요가웨어 (xexymix.com)",
+
     "timex": "시계 브랜드 (timex.kr)",
     "klairs": "스킨케어 브랜드 (klairs.co.kr)",
     "malbongolf": "골프웨어 → malbon.com (글로벌 골프)",
@@ -40,6 +40,7 @@ REJECT = {
     "chasecult": "5% 쿠폰 — 멤버십 혜택",
     "anillo_dup": "duplicate",
     "beanpoleacc": "빈폴 액세서리 — SSFShop 플랫폼 (공식몰 아님)",
+    "wwwssfshop": "빈폴 액세서리 — SSFShop 플랫폼 (공식몰 아님, URL-host 코드 변형)",
     "att": "AT&T 미국 통신사 (att.com)",
     "vuori": "신세계V 플랫폼 매장 (공식몰 아님, shinsegaev.com)",
     "grove": "Grove Collaborative 홈/바디케어 (미국, grove.co 리다이렉트)",
@@ -63,10 +64,9 @@ REJECT = {
     "subdued": "이탈리아 글로벌 SPA 브랜드 (kr.subdued.com)",
     "wioe": "신규 가입 10% 할인 — 멤버십 혜택",
     "universegarment": "신규가입 10% 쿠폰 — 멤버십 혜택",
-    "zzerosongzio": "신규가입 10% 쿠폰 — 멤버십 혜택",
+
     "cargobros": "카카오플친 10% 할인쿠폰 — 멤버십 혜택",
     "findkapoor": "신규가입 10% 쿠폰 — 멤버십 혜택",
-    "prodeshirt": "신규 회원가입 10% COUPON — 멤버십 혜택",
     "dogmaehks": "신규가입 10% 쿠폰 — 멤버십 혜택",
     "glamlady": "신규가입 5% 쿠폰 — 멤버십 혜택",
     "judyn": "신규가입 5% 쿠폰 — 멤버십 혜택",
@@ -80,16 +80,17 @@ REJECT = {
     "helinox": "헬리녹스 미국 글로벌 사이트 (helinox.com) — 첫 구매 10% 뉴스레터 가입혜택",
     "triconix": "탈모/헤어케어 브랜드 (샴푸·두피앰플, 패션 아님)",
     "kitschnkiss": "신규 회원 30% off coupon — 멤버십 혜택",
+    "wwwkitschnkiss": "신규 회원 30% off coupon — 멤버십 혜택 (URL-host 코드 변형)",
     "gocce": "회원 20% 할인 (회원가입 전용) — 멤버십 혜택",
     "positano": "회원가입 시 10% 할인쿠폰 — 멤버십 혜택",
-    "heretic": "JOIN NOW & GET 10% OFF COUPON — 멤버십 혜택",
+
     "ndod": "신규 회원 전용 10% 할인 쿠폰 — 멤버십 혜택",
     "denmade": "카카오톡 플러스친구 추가 시 15% 할인 쿠폰 — 멤버십 혜택",
     "findkapoor": "JULY BEST 20 GET 10% OFF + MEMBERSHIP 10% — 멤버십 혜택",
     "magoodgan": "신규가입 10% 할인 쿠폰 — 멤버십 혜택",
     "hazzys1": "시즌오프 네비게이션 메뉴 + 멤버십 최대 15% — 메뉴/멤버십 노이즈",
     "doffjason": "BLACK FRIDAY 카테고리 메뉴 + 신규 첫구매 10% 쿠폰 — 메뉴/멤버십 노이즈",
-    "maninstore": "BLACK FRIDAY 카테고리 메뉴 (할인율 미표기) — 메뉴 노이즈",
+
     "elago": "폰 케이스/액세서리 브랜드 (갤럭시·버즈 케이스, 패션 아님)",
     "heavenlyjelly_dup": "duplicate",
     "garmin": "스마트워치/GPS 기기 브랜드 (garmin.com, 패션 아님)",
@@ -110,6 +111,29 @@ REJECT = {
     "grafen": "신규가입 5만원 혜택 — 멤버십 노이즈",
     "gramicci": "미국 글로벌 사이츠 (USD 가격, gramicci.com)",
     "lannue": "스킨케어/코스메틱 브랜드 (랑느 코스메틱, lannue.co.kr)",
+    "arocell": "마스크팩/스킨케어 브랜드 (모공앰플·겔마스크, 패션 아님)",
+    "martincoks": "첫 주문 20% 할인쿠폰 발급 — 멤버십 노이즈",
+    "sost": "WELCOME PACK 가입 쿠폰 + 카카오 10% 코드 — 멤버십 노이즈",
+    "tillidie": "미국 서프/스케이트 라이프스타일 브랜드 (USD 가격, tillidie.com)",
+    "graynoise": "회원가입 시 10% 할인 쿠폰 발급 — 멤버십 노이즈",
+    "noice": "카카오톡 채널 추가 시 10% OFF — 멤버십 노이즈",
+    "nocle": "카카오톡 플러스 친구 추가시 10% 할인 — 멤버십 노이즈",
+    "nupip": "신규가입 10% 할인 쿠폰 — 멤버십 노이즈",
+    "wwwmuarmus": "카카오톡 채널 추가 시 10% 할인 쿠폰 — 멤버십 노이즈",
+    "vinaj": "카톡 플친 추가시 10% 할인 쿠폰 증정 — 멤버십 노이즈",
+    "axistudio": "회원가입 시 1,000원 + 10% 할인 — 멤버십 노이즈",
+    "mmic": "첫 구매 10% 할인 쿠폰 — 멤버십 노이즈",
+    "heeari": "신규회원 10% 할인 쿠폰 발급 — 멤버십 노이즈",
+    "kookeesee": "매월 1일 자동 20% 할인 쿠폰 — 멤버십 노이즈",
+    "tarvert": "신규 가입시 최대 20% 할인 쿠폰 — 멤버십 노이즈",
+    "not4nerd": "회원 등급별 최대 10% 추가 할인 — 멤버십 노이즈",
+    "wwwyegg": "Bundle & Save 3개 묶음 상시 20% — 번들 프로모션 (세일 아님)",
+    "musemuseum": "공식몰 상시 10% OFF (Always 10% Off) — 상시 혜택, 세일 아님",
+    "pleasenofollow": "26HS 신상 컬렉션 오픈 세일 10% — 신상 출시 혜택",
+    "breezfy": "폰 케이스/액세서리 브랜드 (USD 가격, breezfy.com)",
+    "cesti": "첫 쇼핑 5% 회원가입 쿠폰 — 멤버십 노이즈",
+    "prooted": "헤어케어/뷰티 브랜드 (트리트먼트·파마케어, 패션 아님)",
+    "dieuamour": "모이사나이트 주얼리/시계 전문 (패션 의류 브랜드 아님)",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop
@@ -150,6 +174,7 @@ def classify_tier(signals_field, max_pct):
 MEMBERSHIP_NOISE_CODES = {
     "ufcsport": "신규 10% 쿠폰 — 멤버십; SUMMER SALE 메뉴 → page",
     "they": "99데이 SALE 진행 (9900원~ 특가); 10%는 신규회원 쿠폰 → page/null",
+    "prodeshirt": "10%는 신규회원 쿠폰; SEASON OFF 메뉴 존재 → page/null",
 }
 
 
