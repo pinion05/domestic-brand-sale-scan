@@ -134,6 +134,19 @@ REJECT = {
     "cesti": "첫 쇼핑 5% 회원가입 쿠폰 — 멤버십 노이즈",
     "prooted": "헤어케어/뷰티 브랜드 (트리트먼트·파마케어, 패션 아님)",
     "dieuamour": "모이사나이트 주얼리/시계 전문 (패션 의류 브랜드 아님)",
+
+    "bornbyhan": "KAKAOTALK FRIENDS 5% OFF SPECIAL COUPON — 멤버십 노이즈",
+    "limelightapparel": "신규 회원 가입 시 10% 할인 쿠폰 — 멤버십 노이즈",
+    "1507": "신규 회원가입시 30% 할인 쿠폰 증정 — 멤버십 노이즈",
+    "sleepyjones": "뉴스레터 가입 첫 구매 15% off — 멤버십 노이즈",
+
+    "outstanding": "outstanding.kr = 재무/투자 뉴스 미디어 (도메인 불일치, 패션 아님)",
+    "mucuandebony": "[미리 만나는 가을] 이달의 신규회원 혜택 20% OFF — 멤버십 노이즈",
+
+    "thevinylhouse": "4주년 40% OFF가 3월 15–18일 과거 프로모션으로 종료 — 현재 캠페인 없음",
+    "hieta": "신규 가입시 10% 할인쿠폰만 남음 — 멤버십 노이즈 (시즌오프 종료)",
+    "outdoorvoices": "신규회원 10% 할인쿠폰만 남음 — 멤버십 노이즈 (시즌오프 종료)",
+    "notyourrose": "26Autumn Collection 신상 10% off — 신상 오픈 혜택 (세일 아님)",
 }
 
 # noise-only signals: if ALL signals are coupon/clearance/outlet, drop
