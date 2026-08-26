@@ -94,6 +94,11 @@ IDENTITY_REJECT = {
     "olivet": "올리베 — 테이블웨어/폰케이스 리빙 잡화 (패션 의류 아님)",
     "belier2": "벨리에 — belier.com 크로셋 의류 글로벌, EUR 가격 (한국 패션 아님)",
     "fully": "풀리 — fully.com = Herman Miller 가구 (Fall Sale 25% off, 패션 아님) — 재제외",
+    # 2026-08-27 verdicts (verified in today's rendered artifacts):
+    "vanwalk": "반워크 — vanwalk.com USD 가격 해외몰 (한국 공홈 아님) — 재제외",
+    "outstanding": "아웃스탠딩 — outstanding.kr IT/투자 뉴스 미디어 (패션 아님) — 재제외",
+    "doingwhat": "두잉왓 — 다크서클 매직 펜슬·스킨톤 로션 등 뷰티/화장품 브랜드 (패션 아님)",
+    "positano": "포지타노 — 레몬 사탕·캔디 식품 브랜드 (패션 아님) — 재제외",
 }
 
 # Membership/coupon-only noise (no real season campaign)
@@ -177,15 +182,55 @@ for _ph in [k for k, v in COUPON_REJECT.items() if v == "placeholder" or "유지
     del COUPON_REJECT[_ph]
 # Real campaigns found in today's artifacts (keep despite coupon menu presence):
 #   surfea (FINAL SEASON OFF), prodeshirt (SEASON OFF menu)
-#   vanwalk (LIMITED TIME OFFER 10% promo code), bibyseob (26 SUMMER 10% off banner)
-#   hieta 15% OFF product prices = real product discount -> KEEP
-#   prospecs 여름 ~30% OFF = real campaign -> KEEP
-#   illigo BRAND WEEK UP TO 40% = real campaign (coupon additive) -> KEEP
-#   alavague BAG TO SCHOOL UP TO 50% OFF = real campaign -> KEEP
-#   andar / xexymix: real 26SS 시즌오프 campaigns visible today -> keep
+#   bibyseob (26 SUMMER 10% off banner), hieta 15% OFF product prices
+#   prospecs 여름 ~30% OFF, illigo BRAND WEEK UP TO 40%, alavague BAG TO SCHOOL UP TO 50%
+#   andar / xexymix: real 26SS 시즌오프 campaigns visible -> keep
 #   codescombineinnerwear: SUMMER PICKS ~51% dated 08.10-08.24 real campaign -> keep
 for _keep in ["hieta", "prospecs", "illigo", "alavague"]:
     COUPON_REJECT.pop(_keep, None)
+
+# 2026-08-27 verdicts (today's rendered-artifact evidence):
+#   RESTORED as real campaigns (removed from COUPON_REJECT — campaign visible today):
+#     muarmus/wwwmuarmus: TIME SALE 20~30% countdown on products -> KEEP sale
+#     doffjason/doffjason2: SEASON OFF menu visible -> KEEP page
+#     leire(르아르): 블랙프라이데이 ~88% + 세일 카테고리 — 전일 exact 유지
+#     ronron/atcorner/lmood/ept/taildern: SEASON OFF menu visible -> KEEP page
+#     boovoom(시즌 오프 ~84%), heute(SEASON OFF UP TO 70%), nain(TIME SALE ~80%),
+#     letedepauline(26' Clearance 8.25-9.10 UP TO 60%) -> KEEP exact
+#   NEW rejects (membership/coupon/new-open noise, no season campaign):
+for _restore in ["muarmus", "wwwmuarmus", "doffjason", "doffjason2", "leire", "rosie"]:
+    COUPON_REJECT.pop(_restore, None)
+COUPON_REJECT.update({
+    "notyourrose": "낫 유어 로즈 — 26Autumn Collection 신상 10% + 회원가입 5,000P (신상·회원 노이즈)",
+    "rosie": "로지 — 신상 5% 할인 + 회원가입 쿠폰발급 (회원·신상 노이즈)",
+    "miuki": "미유키 — 7.15 발매 기념 최대 20% (신상 오픈 혜택)",
+    "friver07": "프리버07 — New Item 15% OFF 26 FALL 1st DROP (신상 오픈 노이즈)",
+    "ayasnsey": "아야즈앤세이 — 첫 FW 컬렉션 발매 기념 30% (무신사 발매 기념 — 신상·타플랫폼 혜택)",
+    "bibyseob": "바이바이섭 — 여름 신상 자사몰 10% 할인 (신상 오픈 혜택)",
+    "rubymerlot": "루비멀로 — Sign up 이메일 가입 10% (회원 노이즈)",
+    "tuomio": "뚜오미오 — 카카오 채널추가 20% 쿠폰 (채널 노이즈) — 재제외",
+    "louisquatorze": "루이까또즈 — Sign up 15% off first order (회원 노이즈) — 재제외",
+    "maxza": "마쟈 — 신규회원 최대 20% 쿠폰 (회원 노이즈) — 재제외",
+    "wwwmontbell": "몽벨 — 회원가입 5% 쿠폰 (회원 노이즈) — 재제외",
+    "mucuandebony": "무쿠앤에보니 — 이달의 신규회원 20% OFF (회원 노이즈) — 재제외",
+    "ikalook": "이카룩 — 첫 쇼핑 회원가입 20% 쿠폰 (회원 노이즈) — 재제외",
+    "eprlayer": "이피알 레이어 — 신규 회원 10% Welcome 쿠폰 (회원 노이즈) — 재제외",
+    "toulnbrick": "툴룬즈브릭 — JOIN NOW & SAVE 10% 신규회원 쿠폰 (회원 노이즈) — 재제외",
+    "formlich": "폼리쉬 — 신규 가입 3% 쿠폰 (회원 노이즈) — 재제외",
+    "hervino": "에르비노 — 신규 회원가입 20% 쿠폰 + 적립금 (회원 노이즈) — 재제외",
+    "vacantarchive": "베이컨트 아카이브 — KAKAOTALK FRIENDS 10% 쿠폰 (채널 노이즈) — 재제외",
+    "surfea": "써피 — 신규회원 10% 할인 쿠폰만 남음 (FINAL SEASON OFF 소멸) — 재제외",
+    "hieta": "히에타 — 신규 가입 10% 할인쿠폰 + 적립금만 가시 (제품 할인가 소멸) — 재제외",
+    "prospecs": "프로-스펙스 — 신규 가입시 10%OFF 쿠폰만 가시 — 재제외",
+    "codescombineinnerwear": "코데즈컴바인 이너웨어 — 첫구매 베스트 20% 혜택만 남음 (SUMMER PICKS ~51%는 08.24 종료) — 재제외",
+    "gemgemparadis": "젬젬파라디 — 신규 회원가입 10% 쿠폰 (회원 노이즈)",
+    "desporte": "데스포르치 — 신규 가입 3,000원 쿠폰 + 등급별 최대 5% 적립 (회원·적립 노이즈)",
+    "horlisun": "홀리선 — 08.26 5일 한정 10% + 카카오채널 5% 쿠폰 (기한·채널 노이즈)",
+    "snoya": "스노야 — 공식몰 오픈 기념 30%/26FW 런칭 10% (오픈·신상 노이즈)",
+    "firenzeatelier": "피렌체 아뜨리에 — 회원등급별 최대 20% 추가할인 + 카톡채널 5% 쿠폰 (멤버십 노이즈) — 재제외",
+    "outdoorvoices": "아웃도어 보이스 — 26 가을/겨울 컬렉션 발매 10% + 회원가 (신상·멤버십) — 재제외",
+    "thevinylhouse": "더바이닐하우스 — 4주년 40% OFF가 3월 15–18일 과거 프로모션 (현재 캠페인 없음) — 재제외",
+})
 
 # 2026-08-23 verdicts (verified in today's rendered artifacts):
 #   cornell/캔버스: cornell.com = Cornell Communications 미국 널스콜/비상벨 장비 (패션 아님) -> identity reject
