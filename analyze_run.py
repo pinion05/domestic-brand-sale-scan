@@ -99,7 +99,12 @@ IDENTITY_REJECT = {
     "outstanding": "아웃스탠딩 — outstanding.kr IT/투자 뉴스 미디어 (패션 아님) — 재제외",
     "doingwhat": "두잉왓 — 다크서클 매직 펜슬·스킨톤 로션 등 뷰티/화장품 브랜드 (패션 아님)",
     "positano": "포지타노 — 레몬 사탕·캔디 식품 브랜드 (패션 아님) — 재제외",
+    "valik": "발릭 — 주얼리 제작 브랜드, B.B NEW DROP 10% (패션 의류 아님)",
+    # 2026-08-28 verdicts (verified in today's rendered artifacts):
+    "fitflop": "핏플랍 — ssfshop.com/fitflop 플랫폼 매장 (공식몰 아님)",
+    "merzbschwanen": "메르츠 비 슈바넨 — 독일 글로벌몰 EUR 가격 + 뉴스레터 10% 쿠폰 (한국 패션 아님)",
 }
+
 
 # Membership/coupon-only noise (no real season campaign)
 COUPON_REJECT = {
@@ -201,6 +206,15 @@ for _keep in ["hieta", "prospecs", "illigo", "alavague"]:
 for _restore in ["muarmus", "wwwmuarmus", "doffjason", "doffjason2", "leire", "rosie"]:
     COUPON_REJECT.pop(_restore, None)
 COUPON_REJECT.update({
+    # 2026-08-28 verdicts (today's rendered-artifact evidence):
+    "muarmus": "무아르무스 — 카카오톡 채널 추가 시 10% 할인 쿠폰만 가시 (TIME SALE 소멸) — 재제외",
+    "wwwmuarmus": "무아르무스 — 카카오톡 채널 10% 쿠폰만 가시 — 재제외",
+    "blueing": "블루잉 — 첫 회원가입시 20% 할인 쿠폰 즉시 지급 (회원 노이즈)",
+    "urago": "유라고 — 26FW 1st collection 신상 15% 할인 (신상 오픈 노이즈)",
+    "painorpleasure": "페인오어플레져 — 26FW MIDNIGHT TIDE 1st Drop 15% (신상 오픈 노이즈)",
+    "fingersuit": "핑거수트 — 26 TONE-UP STRENGTHENER 론칭 혜택 ~15% (신상 오픈 노이즈)",
+    "epingler": "에핑글러 — PRE-ORDER 25% OFF FW26 1ST DROP (신상 예약판매 노이즈)",
+    # legacy (2026-08-27 and earlier) follows:
     "notyourrose": "낫 유어 로즈 — 26Autumn Collection 신상 10% + 회원가입 5,000P (신상·회원 노이즈)",
     "rosie": "로지 — 신상 5% 할인 + 회원가입 쿠폰발급 (회원·신상 노이즈)",
     "miuki": "미유키 — 7.15 발매 기념 최대 20% (신상 오픈 혜택)",
@@ -255,6 +269,9 @@ NAME_REJECT = {
 #   vacantarchive: 시즌오프 메뉴 활성. 노출 %는 08.24 신상 예약가(10%)와 카카오친구
 #     10% 쿠폰뿐 → % 신호는 노이즈, 시즌오프 페이지만 인정 (page/null).
 VACANT_PAGE_ONLY = {"vacantarchive"}
+# 2026-08-28: visible % is membership-signup coupon only; SEASON OFF menu remains
+# (이피티 EPT 회원가입 10%, 찰스앤키스 뉴스레터/회원가입 10%, 테일던·프로드셔츠 회원가입 10% 쿠폰)
+PAGE_ONLY = {"ept", "charleskeith", "taildern", "prodeshirt"}
 
 def parse_summary(path):
     rows = []
@@ -317,6 +334,8 @@ def main():
         max_pct = extract_max_pct(r["signals"])
         if code in VACANT_PAGE_ONLY:
             max_pct = None
+        if code in PAGE_ONLY:
+            max_pct = None
         season = bool(re.search(r"(시즌\s*오프|season[\s_-]*off)", r["signals"], re.IGNORECASE)) or \
             bool(re.search(r"end[\s_-]*of[\s_-]*season[\s_-]*sale", r["signals"], re.IGNORECASE))
         bf = bool(re.search(r"(블랙\s*프라이디|black[\s_-]*friday)", r["signals"], re.IGNORECASE))
@@ -374,6 +393,8 @@ def main():
             continue  # brand had its own render row; its rejection stands
         # this URL's render is the brand's evidence -> clone the row
         max_pct = extract_max_pct(r["signals"])
+        if r["code"] in VACANT_PAGE_ONLY or r["code"] in PAGE_ONLY:
+            max_pct = None
         season = bool(re.search(r"(시즌\s*오프|season[\s_-]*off)", r["signals"], re.IGNORECASE)) or \
             bool(re.search(r"end[\s_-]*of[\s_-]*season[\s_-]*sale", r["signals"], re.IGNORECASE))
         bf = bool(re.search(r"(블랙\s*프라이디|black[\s_-]*friday)", r["signals"], re.IGNORECASE))
