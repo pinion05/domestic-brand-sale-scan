@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-08-29T08:29:00+09:00",
+  "generatedAt": "2026-08-30T08:23:39+09:00",
   "entries": [
+    {
+      "date": "2026-08-30",
+      "total": 169,
+      "exact": 125,
+      "page": 44,
+      "added": [
+        "비터레인"
+      ],
+      "removed": [],
+      "prevTotal": 168,
+      "delta": 1
+    },
     {
       "date": "2026-08-29",
       "total": 168,
