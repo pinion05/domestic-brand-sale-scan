@@ -104,3 +104,16 @@ render-input-registry-all.tsv
 render-main.log
 rendered-retry2/
 rendered-retry3/
+
+# 2026-09-02 daily artifacts (intermediate)
+rendered-known/
+rendered-new/
+render-known.log
+render-new.log
+new-concrete-final.tsv
+fetch.log
+verdicts.txt
+build_today.py
+build_0902.py
+gen_report_*.py
+new-codes.txt
